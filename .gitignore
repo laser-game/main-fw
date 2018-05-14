@@ -50,3 +50,17 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Atom
+.tags*
+
+# STM32
+*.crf
+*.lnp
+*.lst
+*.dep
+*.axf
+*.htm
+*.bin
+*.mxproject
+*build/*
