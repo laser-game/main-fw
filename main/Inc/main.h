@@ -49,6 +49,11 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define RF_ENABLE_Pin       GPIO_PIN_11
+#define RF_ENABLE_GPIO_Port GPIOA
+#define RF_CONFIG_Pin       GPIO_PIN_12
+#define RF_CONFIG_GPIO_Port GPIOA
+
 /* ########################## Assert Selection ############################## */
 
 /**

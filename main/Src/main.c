@@ -40,7 +40,8 @@
 #include "stm32f4xx_hal.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "hm-trp.hpp"
+#include "color.hpp"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -118,6 +119,12 @@ int main(void)
     MX_USART3_UART_Init();
     MX_USART6_UART_Init();
     /* USER CODE BEGIN 2 */
+
+    HMTRP rf_module;
+    Color color;
+
+    color.rgb(0, 0, 255);
+
 
     /* USER CODE END 2 */
 
@@ -342,7 +349,7 @@ static void MX_GPIO_Init(void)
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_12, GPIO_PIN_RESET);
 
     /*Configure GPIO pin Output Level */
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11 | GPIO_PIN_12, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, RF_ENABLE_Pin | RF_CONFIG_Pin, GPIO_PIN_RESET);
 
     /*Configure GPIO pin : PC13 */
     GPIO_InitStruct.Pin  = GPIO_PIN_13;
@@ -377,8 +384,8 @@ static void MX_GPIO_Init(void)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-    /*Configure GPIO pins : PA11 PA12 */
-    GPIO_InitStruct.Pin   = GPIO_PIN_11 | GPIO_PIN_12;
+    /*Configure GPIO pins : RF_ENABLE_Pin RF_CONFIG_Pin */
+    GPIO_InitStruct.Pin   = RF_ENABLE_Pin | RF_CONFIG_Pin;
     GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull  = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
