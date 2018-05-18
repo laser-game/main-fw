@@ -17,9 +17,14 @@ private:
 public:
     SoundPlayer(DAC_HandleTypeDef *dac, DMA_HandleTypeDef *dma_dac, TIM_HandleTypeDef *tim, uint8_t channel);
 
+    inline bool is_sound_playing(void)
+    {
+        return (HAL_DMA_GetState(dma_dac) == HAL_DMA_STATE_BUSY) ? true : false;
+    }
+
     inline void wait_to_end_sound(void)
     {
-        while (HAL_DMA_GetState(dma_dac) == HAL_DMA_STATE_BUSY)
+        while (is_sound_playing())
             ;
     }
 
@@ -32,6 +37,9 @@ public:
     {
         HAL_GPIO_WritePin(MUTE_GPIO_Port, MUTE_Pin, GPIO_PIN_SET);
     }
+
+    void play(uint32_t *p_data, uint32_t size, uint32_t alignment);
+    void play_and_wait(uint32_t *p_data, uint32_t size, uint32_t alignment);
 };
 
 #endif // ifndef __SOUND_PLAYER_INCLUDED__

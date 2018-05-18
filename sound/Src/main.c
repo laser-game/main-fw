@@ -109,10 +109,55 @@ int main(void)
     MX_TIM6_Init();
     /* USER CODE BEGIN 2 */
     SoundPlayer sound_player(&hdac, &hdma_dac1, &htim6, DAC_CHANNEL_1);
-    HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t *) sound_m_cz_01, 10031, DAC_ALIGN_12B_R);
-    sound_player.on();
-    sound_player.wait_to_end_sound();
-    sound_player.off();
+
+    sound_player.play_and_wait((uint32_t *) sound_cm_activated, SOUND_CM_ACTIVATED_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cm_gun, SOUND_CM_GUN_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_bez, SOUND_CZ_BEZ_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_1, SOUND_CZ_CISLO_1_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_2, SOUND_CZ_CISLO_2_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_3, SOUND_CZ_CISLO_3_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_4, SOUND_CZ_CISLO_4_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_5, SOUND_CZ_CISLO_5_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_dobry_zasah, SOUND_CZ_DOBRY_ZASAH_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_hrej, SOUND_CZ_HREJ_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_konec_hry, SOUND_CZ_KONEC_HRY_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_nevzdavejse, SOUND_CZ_NEVZDAVEJSE_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_cz_pokracuj, SOUND_CZ_POKRACUJ_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_dont_give_up, SOUND_EN_DONT_GIVE_UP_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_game_over, SOUND_EN_GAME_OVER_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_go, SOUND_EN_GO_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_keep_going, SOUND_EN_KEEP_GOING_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_number_1, SOUND_EN_NUMBER_1_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_number_2, SOUND_EN_NUMBER_2_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_number_3, SOUND_EN_NUMBER_3_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_number_4, SOUND_EN_NUMBER_4_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_number_5, SOUND_EN_NUMBER_5_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_play, SOUND_EN_PLAY_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
+    sound_player.play_and_wait((uint32_t *) sound_en_well_done, SOUND_EN_WELL_DONE_SIZE, DAC_ALIGN_12B_R);
+    HAL_Delay(500);
 
 
     /* USER CODE END 2 */
@@ -122,6 +167,7 @@ int main(void)
     while (1)
     {
         /* USER CODE END WHILE */
+
 
         /* USER CODE BEGIN 3 */
     }

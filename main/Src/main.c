@@ -124,6 +124,7 @@ int main(void)
     Color color;
 
     color.rgb(0, 0, 255);
+    
 
 
     /* USER CODE END 2 */
