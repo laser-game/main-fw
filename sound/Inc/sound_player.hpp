@@ -38,8 +38,8 @@ public:
         HAL_GPIO_WritePin(MUTE_GPIO_Port, MUTE_Pin, GPIO_PIN_SET);
     }
 
-    void play(uint32_t *p_data, uint32_t size, uint32_t alignment);
-    void play_and_wait(uint32_t *p_data, uint32_t size, uint32_t alignment);
+    void play(uint32_t *p_data, uint32_t size, uint32_t alignment = DAC_ALIGN_12B_R);
+    void play_and_wait(uint32_t *p_data, uint32_t size, uint32_t alignment = DAC_ALIGN_12B_R);
 };
 
 #endif // ifndef __SOUND_PLAYER_INCLUDED__
