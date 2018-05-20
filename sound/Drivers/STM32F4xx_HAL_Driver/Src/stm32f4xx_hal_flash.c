@@ -12,31 +12,31 @@
  * @verbatim
  * ==============================================================================
  ##### FLASH peripheral features #####
- ##########==============================================================================
+ ###############==============================================================================
  #####
- ##########[..] The Flash memory interface manages CPU AHB I-Code and D-Code accesses
+ ###############[..] The Flash memory interface manages CPU AHB I-Code and D-Code accesses
  ##### to the Flash memory. It implements the erase and program Flash memory operations
  ##### and the read and write protection mechanisms.
  #####
- ##########[..] The Flash memory interface accelerates code execution with a system of instruction
+ ###############[..] The Flash memory interface accelerates code execution with a system of instruction
  ##### prefetch and cache lines.
  #####
- ##########[..] The FLASH main features are:
- ##########(+) Flash memory read operations
- ##########(+) Flash memory program/erase operations
- ##########(+) Read / write protections
- ##########(+) Prefetch on I-Code
- ##########(+) 64 cache lines of 128 bits on I-Code
- ##########(+) 8 cache lines of 128 bits on D-Code
+ ###############[..] The FLASH main features are:
+ ###############(+) Flash memory read operations
+ ###############(+) Flash memory program/erase operations
+ ###############(+) Read / write protections
+ ###############(+) Prefetch on I-Code
+ ###############(+) 64 cache lines of 128 bits on I-Code
+ ###############(+) 8 cache lines of 128 bits on D-Code
  #####
  #####
  ##### How to use this driver #####
- ##########==============================================================================
- ##########[..]
- ##########This driver provides functions and macros to configure and program the FLASH
- ##########memory of all STM32F4xx devices.
+ ###############==============================================================================
+ ###############[..]
+ ###############This driver provides functions and macros to configure and program the FLASH
+ ###############memory of all STM32F4xx devices.
  #####
- ##########(#) FLASH Memory IO Programming functions:
+ ###############(#) FLASH Memory IO Programming functions:
  #####     (++) Lock and Unlock the FLASH interface using HAL_FLASH_Unlock() and
  #####          HAL_FLASH_Lock() functions
  #####     (++) Program functions: byte, half word, word and double word
@@ -44,14 +44,14 @@
  #####      (+++) Polling mode using HAL_FLASH_Program() function
  #####      (+++) Interrupt mode using HAL_FLASH_Program_IT() function
  #####
- ##########(#) Interrupts and flags management functions :
+ ###############(#) Interrupts and flags management functions :
  #####     (++) Handle FLASH interrupts by calling HAL_FLASH_IRQHandler()
  #####     (++) Wait for last FLASH operation according to its status
  #####     (++) Get error flag status by calling HAL_SetErrorCode()
  #####
- ##########[..]
- ##########In addition to these functions, this driver includes a set of macros allowing
- ##########to handle the following operations:
+ ###############[..]
+ ###############In addition to these functions, this driver includes a set of macros allowing
+ ###############to handle the following operations:
  ##### (+) Set the latency
  ##### (+) Enable/Disable the prefetch buffer
  ##### (+) Enable/Disable the Instruction cache and the Data cache
@@ -59,7 +59,7 @@
  ##### (+) Enable/Disable the FLASH interrupts
  ##### (+) Monitor the FLASH flags status
  #####
- ##########@endverbatim
+ ###############@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -158,12 +158,12 @@ HAL_StatusTypeDef FLASH_WaitForLastOperation(uint32_t Timeout);
  * @verbatim
  * ===============================================================================
  ##### Programming operation functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to manage the FLASH
- ##########program operations.
+ ###############===============================================================================
+ ###############[..]
+ ###############This subsection provides a set of functions allowing to manage the FLASH
+ ###############program operations.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -442,12 +442,12 @@ __weak void HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue)
  * @verbatim
  * ===============================================================================
  ##### Peripheral Control functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to control the FLASH
- ##########memory operations.
+ ###############===============================================================================
+ ###############[..]
+ ###############This subsection provides a set of functions allowing to control the FLASH
+ ###############memory operations.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -542,11 +542,11 @@ HAL_StatusTypeDef HAL_FLASH_OB_Launch(void)
  * @verbatim
  * ===============================================================================
  ##### Peripheral Errors functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection permits to get in run-time Errors of the FLASH peripheral.
+ ###############===============================================================================
+ ###############[..]
+ ###############This subsection permits to get in run-time Errors of the FLASH peripheral.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 

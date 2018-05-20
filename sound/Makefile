@@ -80,7 +80,6 @@ CPP_SOURCES = \
 Src/sound.cpp \
 Src/sound_player.cpp \
 
-
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f405xx.s
@@ -142,7 +141,8 @@ C_INCLUDES =  \
 -IDrivers/CMSIS/Include \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
--IInc
+-I../../common-fw/Inc \
+-IInc \
 
 
 

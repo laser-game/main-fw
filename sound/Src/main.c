@@ -54,7 +54,7 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+SoundPlayer sound_player(&hdac, &hdma_dac1, &htim6, &huart1, DAC_CHANNEL_1);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -108,32 +108,36 @@ int main(void)
     MX_USART1_UART_Init();
     MX_TIM6_Init();
     /* USER CODE BEGIN 2 */
-    SoundPlayer sound_player(&hdac, &hdma_dac1, &htim6, DAC_CHANNEL_1);
 
-    sound_player.play_and_wait((uint32_t *) sound_cm_activated, SOUND_CM_ACTIVATED_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cm_gun, SOUND_CM_GUN_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_bez, SOUND_CZ_BEZ_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_1, SOUND_CZ_CISLO_1_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_2, SOUND_CZ_CISLO_2_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_3, SOUND_CZ_CISLO_3_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_4, SOUND_CZ_CISLO_4_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_cislo_5, SOUND_CZ_CISLO_5_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_dobry_zasah, SOUND_CZ_DOBRY_ZASAH_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_hrej, SOUND_CZ_HREJ_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_konec_hry, SOUND_CZ_KONEC_HRY_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_nevzdavejse, SOUND_CZ_NEVZDAVEJSE_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_cz_pokracuj, SOUND_CZ_POKRACUJ_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_dont_give_up, SOUND_EN_DONT_GIVE_UP_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_game_over, SOUND_EN_GAME_OVER_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_go, SOUND_EN_GO_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_keep_going, SOUND_EN_KEEP_GOING_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_number_1, SOUND_EN_NUMBER_1_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_number_2, SOUND_EN_NUMBER_2_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_number_3, SOUND_EN_NUMBER_3_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_number_4, SOUND_EN_NUMBER_4_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_number_5, SOUND_EN_NUMBER_5_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_play, SOUND_EN_PLAY_SIZE);
-    sound_player.play_and_wait((uint32_t *) sound_en_well_done, SOUND_EN_WELL_DONE_SIZE);
+    sound_player.cmd(SOUND_CMD_SET_SOUND_SET_EN);
+    sound_player.cmd(SOUND_CMD_PLAY_ACTIVATED);
+    sound_player.cmd(SOUND_CMD_PLAY_GUN);
+    sound_player.cmd(SOUND_CMD_PLAY_DONT_GIVE_UP);
+    sound_player.cmd(SOUND_CMD_PLAY_GAME_OVER);
+    sound_player.cmd(SOUND_CMD_PLAY_GO);
+    sound_player.cmd(SOUND_CMD_PLAY_KEEP_GOING);
+    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_1);
+    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_2);
+    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_3);
+    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_4);
+    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_5);
+    sound_player.cmd(SOUND_CMD_PLAY_PLAY);
+    sound_player.cmd(SOUND_CMD_PLAY_WELL_DONE);
+
+    /*sound_player.cmd(SOUND_CMD_SET_SOUND_SET_CZ);
+     * sound_player.cmd(SOUND_CMD_PLAY_ACTIVATED);
+     * sound_player.cmd(SOUND_CMD_PLAY_GUN);
+     * sound_player.cmd(SOUND_CMD_PLAY_DONT_GIVE_UP);
+     * sound_player.cmd(SOUND_CMD_PLAY_GAME_OVER);
+     * sound_player.cmd(SOUND_CMD_PLAY_GO);
+     * sound_player.cmd(SOUND_CMD_PLAY_KEEP_GOING);
+     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_1);
+     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_2);
+     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_3);
+     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_4);
+     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_5);
+     * sound_player.cmd(SOUND_CMD_PLAY_PLAY);
+     * sound_player.cmd(SOUND_CMD_PLAY_WELL_DONE);*/
 
 
     /* USER CODE END 2 */

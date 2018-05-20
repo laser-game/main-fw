@@ -13,13 +13,13 @@
  * @verbatim
  * ==============================================================================
  ##### How to use this driver #####
- ##########==============================================================================
- ##########[..]
- ##########The UART HAL driver can be used as follows:
+ ###############==============================================================================
+ ###############[..]
+ ###############The UART HAL driver can be used as follows:
  #####
- ##########(#) Declare a UART_HandleTypeDef handle structure.
+ ###############(#) Declare a UART_HandleTypeDef handle structure.
  #####
- ##########(#) Initialize the UART low level resources by implementing the HAL_UART_MspInit() API:
+ ###############(#) Initialize the UART low level resources by implementing the HAL_UART_MspInit() API:
  #####  (##) Enable the USARTx interface clock.
  #####  (##) UART pins configuration:
  #####      (+++) Enable the clock for the UART GPIOs.
@@ -39,32 +39,32 @@
  #####      (+++) Configure the priority and enable the NVIC for the transfer complete
  #####            interrupt on the DMA Tx/Rx Stream.
  #####
- ##########(#) Program the Baud Rate, Word Length, Stop Bit, Parity, Hardware
+ ###############(#) Program the Baud Rate, Word Length, Stop Bit, Parity, Hardware
  #####  flow control and Mode(Receiver/Transmitter) in the Init structure.
  #####
- ##########(#) For the UART asynchronous mode, initialize the UART registers by calling
+ ###############(#) For the UART asynchronous mode, initialize the UART registers by calling
  #####  the HAL_UART_Init() API.
  #####
- ##########(#) For the UART Half duplex mode, initialize the UART registers by calling
+ ###############(#) For the UART Half duplex mode, initialize the UART registers by calling
  #####  the HAL_HalfDuplex_Init() API.
  #####
- ##########(#) For the LIN mode, initialize the UART registers by calling the HAL_LIN_Init() API.
+ ###############(#) For the LIN mode, initialize the UART registers by calling the HAL_LIN_Init() API.
  #####
- ##########(#) For the Multi-Processor mode, initialize the UART registers by calling
+ ###############(#) For the Multi-Processor mode, initialize the UART registers by calling
  #####  the HAL_MultiProcessor_Init() API.
  #####
- ##########[..]
+ ###############[..]
  ##### (@) The specific UART interrupts (Transmission complete interrupt,
  #####      RXNE interrupt and Error Interrupts) will be managed using the macros
  #####      __HAL_UART_ENABLE_IT() and __HAL_UART_DISABLE_IT() inside the transmit
  #####      and receive process.
  #####
- ##########[..]
+ ###############[..]
  ##### (@) These APIs (HAL_UART_Init() and HAL_HalfDuplex_Init()) configure also the
  #####      low level Hardware GPIO, CLOCK, CORTEX...etc) by calling the customized
  #####      HAL_UART_MspInit() API.
  #####
- ##########[..]
+ ###############[..]
  #####  Three operation modes are available within this driver :
  #####
  *** Polling mode IO operation ***
@@ -120,7 +120,7 @@
  *** [..]
  ***   (@) You can refer to the UART HAL driver header file for more useful macros
  ***
- ******@endverbatim
+ *********@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -215,11 +215,11 @@ static void UART_SetConfig(UART_HandleTypeDef *huart);
  * @verbatim
  * ===============================================================================
  ##### Initialization and Configuration functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to initialize the USARTx or the UARTy
- ##########in asynchronous mode.
- ##########(+) For the asynchronous mode only these parameters can be configured:
+ ###############===============================================================================
+ ###############[..]
+ ###############This subsection provides a set of functions allowing to initialize the USARTx or the UARTy
+ ###############in asynchronous mode.
+ ###############(+) For the asynchronous mode only these parameters can be configured:
  #####  (++) Baud Rate
  #####  (++) Word Length
  #####  (++) Stop Bit
@@ -230,12 +230,12 @@ static void UART_SetConfig(UART_HandleTypeDef *huart);
  #####  (++) Hardware flow control
  #####  (++) Receiver/transmitter modes
  #####  (++) Over Sampling Method
- ##########[..]
- ##########The HAL_UART_Init(), HAL_HalfDuplex_Init(), HAL_LIN_Init() and HAL_MultiProcessor_Init() APIs
- ##########follow respectively the UART asynchronous, UART Half duplex, LIN and Multi-Processor
- ##########configuration procedures (details for the procedures are available in reference manual (RM0329)).
+ ###############[..]
+ ###############The HAL_UART_Init(), HAL_HalfDuplex_Init(), HAL_LIN_Init() and HAL_MultiProcessor_Init() APIs
+ ###############follow respectively the UART asynchronous, UART Half duplex, LIN and Multi-Processor
+ ###############configuration procedures (details for the procedures are available in reference manual (RM0329)).
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -565,12 +565,12 @@ __weak void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
  * @verbatim
  * ==============================================================================
  ##### IO operation functions #####
- ##########==============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to manage the UART asynchronous
- ##########and Half duplex data transfers.
+ ###############==============================================================================
+ ###############[..]
+ ###############This subsection provides a set of functions allowing to manage the UART asynchronous
+ ###############and Half duplex data transfers.
  #####
- ##########(#) There are two modes of transfer:
+ ###############(#) There are two modes of transfer:
  ##### (++) Blocking mode: The communication is performed in polling mode.
  #####      The HAL status of all data processing is returned by the same function
  #####      after finishing transfer.
@@ -584,30 +584,30 @@ __weak void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
  #####      The HAL_UART_ErrorCallback() user callback will be executed when
  #####      a communication error is detected.
  #####
- ##########(#) Blocking mode APIs are:
+ ###############(#) Blocking mode APIs are:
  #####  (++) HAL_UART_Transmit()
  #####  (++) HAL_UART_Receive()
  #####
- ##########(#) Non Blocking mode APIs with Interrupt are:
+ ###############(#) Non Blocking mode APIs with Interrupt are:
  #####  (++) HAL_UART_Transmit_IT()
  #####  (++) HAL_UART_Receive_IT()
  #####  (++) HAL_UART_IRQHandler()
  #####
- ##########(#) Non Blocking mode functions with DMA are:
+ ###############(#) Non Blocking mode functions with DMA are:
  #####  (++) HAL_UART_Transmit_DMA()
  #####  (++) HAL_UART_Receive_DMA()
  #####
- ##########(#) A set of Transfer Complete Callbacks are provided in non blocking mode:
+ ###############(#) A set of Transfer Complete Callbacks are provided in non blocking mode:
  #####  (++) HAL_UART_TxCpltCallback()
  #####  (++) HAL_UART_RxCpltCallback()
  #####  (++) HAL_UART_ErrorCallback()
  #####
- ##########[..]
- ##########(@) In the Half duplex communication, it is forbidden to run the transmit
+ ###############[..]
+ ###############(@) In the Half duplex communication, it is forbidden to run the transmit
  #####    and receive process in parallel, the UART state HAL_UART_STATE_BUSY_TX_RX
  #####    can't be useful.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -1782,14 +1782,14 @@ __weak void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart)
  * @verbatim
  * ==============================================================================
  ##### Peripheral Control functions #####
- ##########==============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to control the UART:
- ##########(+) HAL_LIN_SendBreak() API can be helpful to transmit the break character.
- ##########(+) HAL_MultiProcessor_EnterMuteMode() API can be helpful to enter the UART in mute mode.
- ##########(+) HAL_MultiProcessor_ExitMuteMode() API can be helpful to exit the UART mute mode by software.
+ ###############==============================================================================
+ ###############[..]
+ ###############This subsection provides a set of functions allowing to control the UART:
+ ###############(+) HAL_LIN_SendBreak() API can be helpful to transmit the break character.
+ ###############(+) HAL_MultiProcessor_EnterMuteMode() API can be helpful to enter the UART in mute mode.
+ ###############(+) HAL_MultiProcessor_ExitMuteMode() API can be helpful to exit the UART mute mode by software.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -1954,15 +1954,15 @@ HAL_StatusTypeDef HAL_HalfDuplex_EnableReceiver(UART_HandleTypeDef *huart)
  * @verbatim
  * ==============================================================================
  ##### Peripheral State and Errors functions #####
- ##########==============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to return the State of
- ##########UART communication process, return Peripheral Errors occurred during communication
- ##########process
- ##########(+) HAL_UART_GetState() API can be helpful to check in run-time the state of the UART peripheral.
- ##########(+) HAL_UART_GetError() check in run-time errors that could be occurred during communication.
+ ###############==============================================================================
+ ###############[..]
+ ###############This subsection provides a set of functions allowing to return the State of
+ ###############UART communication process, return Peripheral Errors occurred during communication
+ ###############process
+ ###############(+) HAL_UART_GetState() API can be helpful to check in run-time the state of the UART peripheral.
+ ###############(+) HAL_UART_GetError() check in run-time errors that could be occurred during communication.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 

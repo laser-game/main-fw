@@ -11,46 +11,46 @@
  * @verbatim
  * ==============================================================================
  ##### RCC specific features #####
- ##########==============================================================================
- ##########[..]
- ##########After reset the device is running from Internal High Speed oscillator
- ##########(HSI 16MHz) with Flash 0 wait state, Flash prefetch buffer, D-Cache
- ##########and I-Cache are disabled, and all peripherals are off except internal
- ##########SRAM, Flash and JTAG.
- ##########(+) There is no prescaler on High speed (AHB) and Low speed (APB) busses;
+ ###############==============================================================================
+ ###############[..]
+ ###############After reset the device is running from Internal High Speed oscillator
+ ###############(HSI 16MHz) with Flash 0 wait state, Flash prefetch buffer, D-Cache
+ ###############and I-Cache are disabled, and all peripherals are off except internal
+ ###############SRAM, Flash and JTAG.
+ ###############(+) There is no prescaler on High speed (AHB) and Low speed (APB) busses;
  #####    all peripherals mapped on these busses are running at HSI speed.
- ##########(+) The clock for all peripherals is switched off, except the SRAM and FLASH.
- ##########(+) All GPIOs are in input floating state, except the JTAG pins which
+ ###############(+) The clock for all peripherals is switched off, except the SRAM and FLASH.
+ ###############(+) All GPIOs are in input floating state, except the JTAG pins which
  #####    are assigned to be used for debug purpose.
  #####
- ##########[..]
- ##########Once the device started from reset, the user application has to:
- ##########(+) Configure the clock source to be used to drive the System clock
+ ###############[..]
+ ###############Once the device started from reset, the user application has to:
+ ###############(+) Configure the clock source to be used to drive the System clock
  #####    (if the application needs higher frequency/performance)
- ##########(+) Configure the System clock frequency and Flash settings
- ##########(+) Configure the AHB and APB busses prescalers
- ##########(+) Enable the clock for the peripheral(s) to be used
- ##########(+) Configure the clock source(s) for peripherals which clocks are not
+ ###############(+) Configure the System clock frequency and Flash settings
+ ###############(+) Configure the AHB and APB busses prescalers
+ ###############(+) Enable the clock for the peripheral(s) to be used
+ ###############(+) Configure the clock source(s) for peripherals which clocks are not
  #####    derived from the System clock (I2S, RTC, ADC, USB OTG FS/SDIO/RNG)
  #####
  ##### RCC Limitations #####
- ##########==============================================================================
- ##########[..]
- ##########A delay between an RCC peripheral clock enable and the effective peripheral
- ##########enabling should be taken into account in order to manage the peripheral read/write
- ##########from/to registers.
- ##########(+) This delay depends on the peripheral mapping.
- ##########(+) If peripheral is mapped on AHB: the delay is 2 AHB clock cycle
+ ###############==============================================================================
+ ###############[..]
+ ###############A delay between an RCC peripheral clock enable and the effective peripheral
+ ###############enabling should be taken into account in order to manage the peripheral read/write
+ ###############from/to registers.
+ ###############(+) This delay depends on the peripheral mapping.
+ ###############(+) If peripheral is mapped on AHB: the delay is 2 AHB clock cycle
  #####    after the clock enable bit is set on the hardware register
- ##########(+) If peripheral is mapped on APB: the delay is 2 APB clock cycle
+ ###############(+) If peripheral is mapped on APB: the delay is 2 APB clock cycle
  #####    after the clock enable bit is set on the hardware register
  #####
- ##########[..]
- ##########Implemented Workaround:
- ##########(+) For AHB & APB peripherals, a dummy read to the peripheral register has been
+ ###############[..]
+ ###############Implemented Workaround:
+ ###############(+) For AHB & APB peripherals, a dummy read to the peripheral register has been
  #####    inserted in each __HAL_RCC_PPP_CLK_ENABLE() macro.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -137,13 +137,13 @@
  * @verbatim
  * ===============================================================================
  ##### Initialization and de-initialization functions #####
- ##########===============================================================================
- ##########[..]
- ##########This section provides functions allowing to configure the internal/external oscillators
- ##########(HSE, HSI, LSE, LSI, PLL, CSS and MCO) and the System busses clocks (SYSCLK, AHB, APB1
+ ###############===============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to configure the internal/external oscillators
+ ###############(HSE, HSI, LSE, LSI, PLL, CSS and MCO) and the System busses clocks (SYSCLK, AHB, APB1
  ##### and APB2).
  #####
- ##########[..] Internal/external clock and PLL configuration
+ ###############[..] Internal/external clock and PLL configuration
  #####   (#) HSI (high-speed internal), 16 MHz factory-trimmed RC used directly or through
  #####       the PLL as System clock source.
  #####
@@ -172,7 +172,7 @@
  #####   (#) MCO2 (microcontroller clock output), used to output HSE, PLL, SYSCLK or PLLI2S
  #####       clock (through a configurable prescaler) on PC9 pin.
  #####
- ##########[..] System, AHB and APB busses clocks configuration
+ ###############[..] System, AHB and APB busses clocks configuration
  #####   (#) Several clock sources can be used to drive the System clock (SYSCLK): HSI,
  #####       HSE and PLL.
  #####       The AHB clock (HCLK) is derived from System clock through configurable
@@ -202,7 +202,7 @@
  #####       Depending on the device voltage range, the maximum frequency should
  #####       be adapted accordingly (refer to the product datasheets for more details).
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -728,12 +728,12 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uin
  * @verbatim
  * ===============================================================================
  ##### Peripheral Control functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to control the RCC Clocks
- ##########frequencies.
+ ###############===============================================================================
+ ###############[..]
+ ###############This subsection provides a set of functions allowing to control the RCC Clocks
+ ###############frequencies.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 

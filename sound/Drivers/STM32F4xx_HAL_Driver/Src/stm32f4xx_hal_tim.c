@@ -32,8 +32,8 @@
  * @verbatim
  * ==============================================================================
  ##### TIMER Generic features #####
- ##########==============================================================================
- ##########[..] The Timer features include:
+ ###############==============================================================================
+ ###############[..] The Timer features include:
  ##### (#) 16-bit up, down, up/down auto-reload counter.
  ##### (#) 16-bit programmable prescaler allowing dividing (also on the fly) the
  #####     counter clock frequency either by any factor between 1 and 65536.
@@ -44,9 +44,9 @@
  #####     (++) One-pulse mode output
  #####
  ##### How to use this driver #####
- ##########==============================================================================
- ##########[..]
- ##########(#) Initialize the TIM low level resources by implementing the following functions
+ ###############==============================================================================
+ ###############[..]
+ ###############(#) Initialize the TIM low level resources by implementing the following functions
  #####   depending from feature used :
  #####     (++) Time Base : HAL_TIM_Base_MspInit()
  #####     (++) Input Capture : HAL_TIM_IC_MspInit()
@@ -55,19 +55,19 @@
  #####     (++) One-pulse mode output : HAL_TIM_OnePulse_MspInit()
  #####     (++) Encoder mode output : HAL_TIM_Encoder_MspInit()
  #####
- ##########(#) Initialize the TIM low level resources :
+ ###############(#) Initialize the TIM low level resources :
  #####  (##) Enable the TIM interface clock using __TIMx_CLK_ENABLE();
  #####  (##) TIM pins configuration
  #####      (+++) Enable the clock for the TIM GPIOs using the following function:
  #####           __GPIOx_CLK_ENABLE();
  #####      (+++) Configure these TIM pins in Alternate function mode using HAL_GPIO_Init();
  #####
- ##########(#) The external Clock can be configured, if needed (the default clock is the
+ ###############(#) The external Clock can be configured, if needed (the default clock is the
  #####   internal clock from the APBx), using the following function:
  #####   HAL_TIM_ConfigClockSource, the clock configuration should be done before
  #####   any start function.
  #####
- ##########(#) Configure the TIM in the desired functioning mode using one of the
+ ###############(#) Configure the TIM in the desired functioning mode using one of the
  #####   initialization function of this driver:
  #####   (++) HAL_TIM_Base_Init: to use the Timer to generate a simple time base
  #####   (++) HAL_TIM_OC_Init and HAL_TIM_OC_ConfigChannel: to use the Timer to generate an
@@ -80,7 +80,7 @@
  #####        in One Pulse Mode.
  #####   (++) HAL_TIM_Encoder_Init: to use the Timer Encoder Interface.
  #####
- ##########(#) Activate the TIM peripheral using one of the start functions depending from the feature used:
+ ###############(#) Activate the TIM peripheral using one of the start functions depending from the feature used:
  #####     (++) Time Base : HAL_TIM_Base_Start(), HAL_TIM_Base_Start_DMA(), HAL_TIM_Base_Start_IT()
  #####     (++) Input Capture :  HAL_TIM_IC_Start(), HAL_TIM_IC_Start_DMA(), HAL_TIM_IC_Start_IT()
  #####     (++) Output Compare : HAL_TIM_OC_Start(), HAL_TIM_OC_Start_DMA(), HAL_TIM_OC_Start_IT()
@@ -88,11 +88,11 @@
  #####     (++) One-pulse mode output : HAL_TIM_OnePulse_Start(), HAL_TIM_OnePulse_Start_IT()
  #####     (++) Encoder mode output : HAL_TIM_Encoder_Start(), HAL_TIM_Encoder_Start_DMA(), HAL_TIM_Encoder_Start_IT().
  #####
- ##########(#) The DMA Burst is managed with the two following functions:
+ ###############(#) The DMA Burst is managed with the two following functions:
  #####   HAL_TIM_DMABurst_WriteStart()
  #####   HAL_TIM_DMABurst_ReadStart()
  #####
- ##########@endverbatim
+ ###############@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -184,19 +184,19 @@ static void TIM_SlaveTimer_SetConfig(TIM_HandleTypeDef *htim,
  * @verbatim
  * ==============================================================================
  ##### Time Base functions #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides functions allowing to:
- ##########(+) Initialize and configure the TIM base.
- ##########(+) De-initialize the TIM base.
- ##########(+) Start the Time Base.
- ##########(+) Stop the Time Base.
- ##########(+) Start the Time Base and enable interrupt.
- ##########(+) Stop the Time Base and disable interrupt.
- ##########(+) Start the Time Base and enable DMA transfer.
- ##########(+) Stop the Time Base and disable DMA transfer.
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to:
+ ###############(+) Initialize and configure the TIM base.
+ ###############(+) De-initialize the TIM base.
+ ###############(+) Start the Time Base.
+ ###############(+) Stop the Time Base.
+ ###############(+) Start the Time Base and enable interrupt.
+ ###############(+) Stop the Time Base and disable interrupt.
+ ###############(+) Start the Time Base and enable DMA transfer.
+ ###############(+) Stop the Time Base and disable DMA transfer.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -470,19 +470,19 @@ HAL_StatusTypeDef HAL_TIM_Base_Stop_DMA(TIM_HandleTypeDef *htim)
  * @verbatim
  * ==============================================================================
  ##### Time Output Compare functions #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides functions allowing to:
- ##########(+) Initialize and configure the TIM Output Compare.
- ##########(+) De-initialize the TIM Output Compare.
- ##########(+) Start the Time Output Compare.
- ##########(+) Stop the Time Output Compare.
- ##########(+) Start the Time Output Compare and enable interrupt.
- ##########(+) Stop the Time Output Compare and disable interrupt.
- ##########(+) Start the Time Output Compare and enable DMA transfer.
- ##########(+) Stop the Time Output Compare and disable DMA transfer.
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to:
+ ###############(+) Initialize and configure the TIM Output Compare.
+ ###############(+) De-initialize the TIM Output Compare.
+ ###############(+) Start the Time Output Compare.
+ ###############(+) Stop the Time Output Compare.
+ ###############(+) Start the Time Output Compare and enable interrupt.
+ ###############(+) Stop the Time Output Compare and disable interrupt.
+ ###############(+) Start the Time Output Compare and enable DMA transfer.
+ ###############(+) Stop the Time Output Compare and disable DMA transfer.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -986,19 +986,19 @@ HAL_StatusTypeDef HAL_TIM_OC_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel)
  * @verbatim
  * ==============================================================================
  ##### Time PWM functions #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides functions allowing to:
- ##########(+) Initialize and configure the TIM OPWM.
- ##########(+) De-initialize the TIM PWM.
- ##########(+) Start the Time PWM.
- ##########(+) Stop the Time PWM.
- ##########(+) Start the Time PWM and enable interrupt.
- ##########(+) Stop the Time PWM and disable interrupt.
- ##########(+) Start the Time PWM and enable DMA transfer.
- ##########(+) Stop the Time PWM and disable DMA transfer.
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to:
+ ###############(+) Initialize and configure the TIM OPWM.
+ ###############(+) De-initialize the TIM PWM.
+ ###############(+) Start the Time PWM.
+ ###############(+) Stop the Time PWM.
+ ###############(+) Start the Time PWM and enable interrupt.
+ ###############(+) Stop the Time PWM and disable interrupt.
+ ###############(+) Start the Time PWM and enable DMA transfer.
+ ###############(+) Stop the Time PWM and disable DMA transfer.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -1505,19 +1505,19 @@ HAL_StatusTypeDef HAL_TIM_PWM_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel
  * @verbatim
  * ==============================================================================
  ##### Time Input Capture functions #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides functions allowing to:
- ##########(+) Initialize and configure the TIM Input Capture.
- ##########(+) De-initialize the TIM Input Capture.
- ##########(+) Start the Time Input Capture.
- ##########(+) Stop the Time Input Capture.
- ##########(+) Start the Time Input Capture and enable interrupt.
- ##########(+) Stop the Time Input Capture and disable interrupt.
- ##########(+) Start the Time Input Capture and enable DMA transfer.
- ##########(+) Stop the Time Input Capture and disable DMA transfer.
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to:
+ ###############(+) Initialize and configure the TIM Input Capture.
+ ###############(+) De-initialize the TIM Input Capture.
+ ###############(+) Start the Time Input Capture.
+ ###############(+) Stop the Time Input Capture.
+ ###############(+) Start the Time Input Capture and enable interrupt.
+ ###############(+) Stop the Time Input Capture and disable interrupt.
+ ###############(+) Start the Time Input Capture and enable DMA transfer.
+ ###############(+) Stop the Time Input Capture and disable DMA transfer.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -1987,19 +1987,19 @@ HAL_StatusTypeDef HAL_TIM_IC_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel)
  * @verbatim
  * ==============================================================================
  ##### Time One Pulse functions #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides functions allowing to:
- ##########(+) Initialize and configure the TIM One Pulse.
- ##########(+) De-initialize the TIM One Pulse.
- ##########(+) Start the Time One Pulse.
- ##########(+) Stop the Time One Pulse.
- ##########(+) Start the Time One Pulse and enable interrupt.
- ##########(+) Stop the Time One Pulse and disable interrupt.
- ##########(+) Start the Time One Pulse and enable DMA transfer.
- ##########(+) Stop the Time One Pulse and disable DMA transfer.
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to:
+ ###############(+) Initialize and configure the TIM One Pulse.
+ ###############(+) De-initialize the TIM One Pulse.
+ ###############(+) Start the Time One Pulse.
+ ###############(+) Stop the Time One Pulse.
+ ###############(+) Start the Time One Pulse and enable interrupt.
+ ###############(+) Stop the Time One Pulse and disable interrupt.
+ ###############(+) Start the Time One Pulse and enable DMA transfer.
+ ###############(+) Stop the Time One Pulse and disable DMA transfer.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -2283,19 +2283,19 @@ HAL_StatusTypeDef HAL_TIM_OnePulse_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Out
  * @verbatim
  * ==============================================================================
  ##### Time Encoder functions #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides functions allowing to:
- ##########(+) Initialize and configure the TIM Encoder.
- ##########(+) De-initialize the TIM Encoder.
- ##########(+) Start the Time Encoder.
- ##########(+) Stop the Time Encoder.
- ##########(+) Start the Time Encoder and enable interrupt.
- ##########(+) Stop the Time Encoder and disable interrupt.
- ##########(+) Start the Time Encoder and enable DMA transfer.
- ##########(+) Stop the Time Encoder and disable DMA transfer.
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to:
+ ###############(+) Initialize and configure the TIM Encoder.
+ ###############(+) De-initialize the TIM Encoder.
+ ###############(+) Start the Time Encoder.
+ ###############(+) Stop the Time Encoder.
+ ###############(+) Start the Time Encoder and enable interrupt.
+ ###############(+) Stop the Time Encoder and disable interrupt.
+ ###############(+) Start the Time Encoder and enable DMA transfer.
+ ###############(+) Stop the Time Encoder and disable DMA transfer.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -2820,11 +2820,11 @@ HAL_StatusTypeDef HAL_TIM_Encoder_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Cha
  * @verbatim
  * ==============================================================================
  ##### IRQ handler management #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides Timer IRQ handler function.
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides Timer IRQ handler function.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -2971,16 +2971,16 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
  * @verbatim
  * ==============================================================================
  ##### Peripheral Control functions #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides functions allowing to:
- ##########(+) Configure The Input Output channels for OC, PWM, IC or One Pulse mode.
- ##########(+) Configure External Clock source.
- ##########(+) Configure Complementary channels, break features and dead time.
- ##########(+) Configure Master and the Slave synchronization.
- ##########(+) Configure the DMA Burst Mode.
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to:
+ ###############(+) Configure The Input Output channels for OC, PWM, IC or One Pulse mode.
+ ###############(+) Configure External Clock source.
+ ###############(+) Configure Complementary channels, break features and dead time.
+ ###############(+) Configure Master and the Slave synchronization.
+ ###############(+) Configure the DMA Burst Mode.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -4312,16 +4312,16 @@ uint32_t HAL_TIM_ReadCapturedValue(TIM_HandleTypeDef *htim, uint32_t Channel)
  * @verbatim
  * ==============================================================================
  ##### TIM Callbacks functions #####
- ##########==============================================================================
- ##########[..]
- ##########This section provides TIM callback functions:
- ##########(+) Timer Period elapsed callback
- ##########(+) Timer Output Compare callback
- ##########(+) Timer Input capture callback
- ##########(+) Timer Trigger callback
- ##########(+) Timer Error callback
+ ###############==============================================================================
+ ###############[..]
+ ###############This section provides TIM callback functions:
+ ###############(+) Timer Period elapsed callback
+ ###############(+) Timer Output Compare callback
+ ###############(+) Timer Input capture callback
+ ###############(+) Timer Trigger callback
+ ###############(+) Timer Error callback
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -4431,12 +4431,12 @@ __weak void HAL_TIM_ErrorCallback(TIM_HandleTypeDef *htim)
  * @verbatim
  * ==============================================================================
  ##### Peripheral State functions #####
- ##########==============================================================================
- ##########[..]
- ##########This subsection permits to get in run-time the status of the peripheral
- ##########and the data flow.
+ ###############==============================================================================
+ ###############[..]
+ ###############This subsection permits to get in run-time the status of the peripheral
+ ###############and the data flow.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 

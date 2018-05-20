@@ -89,17 +89,17 @@
  * @verbatim
  * ===============================================================================
  ##### Initialization and de-initialization functions #####
- ##########===============================================================================
- ##########[..]
- ##########After reset, the backup domain (RTC registers, RTC backup data
- ##########registers and backup SRAM) is protected against possible unwanted
- ##########write accesses.
- ##########To enable access to the RTC Domain and RTC registers, proceed as follows:
+ ###############===============================================================================
+ ###############[..]
+ ###############After reset, the backup domain (RTC registers, RTC backup data
+ ###############registers and backup SRAM) is protected against possible unwanted
+ ###############write accesses.
+ ###############To enable access to the RTC Domain and RTC registers, proceed as follows:
  #####  (+) Enable the Power Controller (PWR) APB1 interface clock using the
  #####      __HAL_RCC_PWR_CLK_ENABLE() macro.
  #####  (+) Enable access to RTC domain using the HAL_PWR_EnableBkUpAccess() function.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -148,11 +148,11 @@ void HAL_PWR_DisableBkUpAccess(void)
  *
  * ===============================================================================
  ##### Peripheral Control functions #####
- ##########===============================================================================
+ ###############===============================================================================
  #####
  *** PVD configuration ***
- ******=========================
- ******[..]
+ *********=========================
+ *********[..]
  ***  (+) The PVD is used to monitor the VDD power supply by comparing it to a
  ***      threshold selected by the PVD Level (PLS[2:0] bits in the PWR_CR).
  ***  (+) A PVDO flag is available to indicate if VDD/VDDA is higher or lower
@@ -162,8 +162,8 @@ void HAL_PWR_DisableBkUpAccess(void)
  ***  (+) The PVD is stopped in Standby mode.
  ***
  *** Wake-up pin configuration ***
- ******================================
- ******[..]
+ *********================================
+ *********[..]
  ***  (+) Wake-up pin is used to wake up the system from Standby mode. This pin is
  ***      forced in input pull-down configuration and is active on rising edges.
  ***  (+) There is one Wake-up pin: Wake-up Pin 1 on PA.00.
@@ -171,8 +171,8 @@ void HAL_PWR_DisableBkUpAccess(void)
  ***       (++) For STM32F410xx/STM32F412xx/STM32F413xx/STM32F423xx  there are three Wake-Up pins: Pin1 on PA.00, Pin2 on PC.00 and Pin3 on PC.01
  ***
  *** Low Power modes configuration ***
- ******=====================================
- ******[..]
+ *********=====================================
+ *********[..]
  ***  The devices feature 3 low-power modes:
  ***  (+) Sleep mode: Cortex-M4 core stopped, peripherals kept running.
  ***  (+) Stop mode: all clocks are stopped, regulator running, regulator
@@ -180,8 +180,8 @@ void HAL_PWR_DisableBkUpAccess(void)
  ***  (+) Standby mode: 1.2V domain powered off.
  ***
  *** Sleep mode ***
- ******==================
- ******[..]
+ *********==================
+ *********[..]
  ***  (+) Entry:
  ***    The Sleep mode is entered by using the HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI)
  ***          functions with
@@ -196,8 +196,8 @@ void HAL_PWR_DisableBkUpAccess(void)
  ***          controller (NVIC) can wake up the device from Sleep mode.
  ***
  *** Stop mode ***
- ******=================
- ******[..]
+ *********=================
+ *********[..]
  ***  In Stop mode, all clocks in the 1.2V domain are stopped, the PLL, the HSI,
  ***  and the HSE RC oscillators are disabled. Internal SRAM and register contents
  ***  are preserved.
@@ -216,9 +216,9 @@ void HAL_PWR_DisableBkUpAccess(void)
  ***    Any EXTI Line (Internal or External) configured in Interrupt/Event mode.
  ***
  *** Standby mode ***
- ******====================
- ******[..]
- ******(+)
+ *********====================
+ *********[..]
+ *********(+)
  ***  The Standby mode allows to achieve the lowest power consumption. It is based
  ***  on the Cortex-M4 deep sleep mode, with the voltage regulator disabled.
  ***  The 1.2V domain is consequently powered off. The PLL, the HSI oscillator and
@@ -235,8 +235,8 @@ void HAL_PWR_DisableBkUpAccess(void)
  ***         tamper event, time-stamp event, external reset in NRST pin, IWDG reset.
  ***
  *** Auto-wake-up (AWU) from low-power mode ***
- ******=============================================
- ******[..]
+ *********=============================================
+ *********[..]
  ***
  *** (+) The MCU can be woken up from low-power mode by an RTC Alarm event, an RTC
  ***  Wake-up event, a tamper event or a time-stamp event, without depending on
@@ -254,7 +254,7 @@ void HAL_PWR_DisableBkUpAccess(void)
  ***    (++) To wake up from the Stop mode with an RTC Wake-up event, it is necessary to
  ***          configure the RTC to generate the RTC Wake-up event using the HAL_RTCEx_SetWakeUpTimer_IT() function.
  ***
- ******@endverbatim
+ *********@endverbatim
  * @{
  */
 

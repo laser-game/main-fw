@@ -12,25 +12,25 @@
  * @verbatim
  * ==============================================================================
  ##### How to use this driver #####
- ##########==============================================================================
- ##########[..]
- ##########(#) Enable and configure the peripheral to be connected to the DMA Stream
+ ###############==============================================================================
+ ###############[..]
+ ###############(#) Enable and configure the peripheral to be connected to the DMA Stream
  ##### (except for internal SRAM/FLASH memories: no initialization is
  ##### necessary) please refer to Reference manual for connection between peripherals
  ##### and DMA requests.
  #####
- ##########(#) For a given Stream, program the required configuration through the following parameters:
+ ###############(#) For a given Stream, program the required configuration through the following parameters:
  ##### Transfer Direction, Source and Destination data formats,
  ##### Circular, Normal or peripheral flow control mode, Stream Priority level,
  ##### Source and Destination Increment mode, FIFO mode and its Threshold (if needed),
  ##### Burst mode for Source and/or Destination (if needed) using HAL_DMA_Init() function.
  #####
- ##########-@-   Prior to HAL_DMA_Init() the clock must be enabled for DMA through the following macros:
+ ###############-@-   Prior to HAL_DMA_Init() the clock must be enabled for DMA through the following macros:
  #####   __HAL_RCC_DMA1_CLK_ENABLE() or __HAL_RCC_DMA2_CLK_ENABLE().
  #####
  *** Polling mode IO operation ***
  *** =================================
- ******[..]
+ *********[..]
  ***      (+) Use HAL_DMA_Start() to start DMA transfer after the configuration of Source
  ***          address and destination address and the Length of data to be transferred.
  ***      (+) Use HAL_DMA_PollForTransfer() to poll for the end of current transfer, in this
@@ -39,7 +39,7 @@
  ***
  *** Interrupt mode IO operation ***
  *** ===================================
- ******[..]
+ *********[..]
  ***      (+) Configure the DMA interrupt priority using HAL_NVIC_SetPriority()
  ***      (+) Enable the DMA IRQ handler using HAL_NVIC_EnableIRQ()
  ***      (+) Use HAL_DMA_Start_IT() to start DMA transfer after the configuration of
@@ -49,7 +49,7 @@
  ***      (+) At the end of data transfer HAL_DMA_IRQHandler() function is executed and user can
  ***          add his own function by customization of function pointer XferCpltCallback and
  ***          XferErrorCallback (i.e a member of DMA handle structure).
- ******[..]
+ *********[..]
  *** (#) Use HAL_DMA_GetState() function to return the DMA state and HAL_DMA_GetError() in case of error
  ***     detection.
  ***
@@ -79,7 +79,7 @@
  *** [..]
  ***  (@) You can refer to the DMA HAL driver header file for more useful macros
  ***
- ******@endverbatim
+ *********@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -167,16 +167,16 @@ static HAL_StatusTypeDef DMA_CheckFifoParam(DMA_HandleTypeDef *hdma);
  * @verbatim
  * ===============================================================================
  ##### Initialization and de-initialization functions  #####
- ##########===============================================================================
- ##########[..]
- ##########This section provides functions allowing to initialize the DMA Stream source
- ##########and destination addresses, incrementation and data sizes, transfer direction,
- ##########circular/normal mode selection, memory-to-memory mode selection and Stream priority value.
- ##########[..]
- ##########The HAL_DMA_Init() function follows the DMA configuration procedures as described in
- ##########reference manual.
+ ###############===============================================================================
+ ###############[..]
+ ###############This section provides functions allowing to initialize the DMA Stream source
+ ###############and destination addresses, incrementation and data sizes, transfer direction,
+ ###############circular/normal mode selection, memory-to-memory mode selection and Stream priority value.
+ ###############[..]
+ ###############The HAL_DMA_Init() function follows the DMA configuration procedures as described in
+ ###############reference manual.
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -395,16 +395,16 @@ HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma)
  * @verbatim
  * ===============================================================================
  #####  IO operation functions  #####
- ##########===============================================================================
- ##########[..]  This section provides functions allowing to:
- ##########(+) Configure the source, destination address and data length and Start DMA transfer
- ##########(+) Configure the source, destination address and data length and
+ ###############===============================================================================
+ ###############[..]  This section provides functions allowing to:
+ ###############(+) Configure the source, destination address and data length and Start DMA transfer
+ ###############(+) Configure the source, destination address and data length and
  #####    Start DMA transfer with interrupt
- ##########(+) Abort DMA transfer
- ##########(+) Poll for transfer complete
- ##########(+) Handle DMA interrupt request
+ ###############(+) Abort DMA transfer
+ ###############(+) Poll for transfer complete
+ ###############(+) Handle DMA interrupt request
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
@@ -1106,13 +1106,13 @@ HAL_StatusTypeDef HAL_DMA_UnRegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_Ca
  * @verbatim
  * ===============================================================================
  ##### State and Errors functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection provides functions allowing to
- ##########(+) Check the DMA state
- ##########(+) Get error code
+ ###############===============================================================================
+ ###############[..]
+ ###############This subsection provides functions allowing to
+ ###############(+) Check the DMA state
+ ###############(+) Get error code
  #####
- ##########@endverbatim
+ ###############@endverbatim
  * @{
  */
 
