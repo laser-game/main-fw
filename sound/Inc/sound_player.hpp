@@ -52,6 +52,7 @@ public:
         HAL_UART_Receive_IT(uart, &uart_rx_buffer, 1);
     }
 
+    void init(void);
     void play(uint32_t *p_data, uint32_t size, uint32_t alignment = DAC_ALIGN_12B_R);
     void play_and_wait(uint32_t *p_data, uint32_t size, uint32_t alignment = DAC_ALIGN_12B_R);
     void cmd(uint8_t cmd);

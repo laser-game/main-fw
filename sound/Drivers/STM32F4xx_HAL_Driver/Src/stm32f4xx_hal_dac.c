@@ -14,23 +14,23 @@
  * @verbatim
  * ==============================================================================
  ##### DAC Peripheral features #####
- ###############==============================================================================
- ###############[..]
+ ##########==============================================================================
+ ##########[..]
  *** DAC Channels ***
  ***  ====================
- *********[..]
- *********The device integrates two 12-bit Digital Analog Converters that can
- *********be used independently or simultaneously (dual mode):
+ ******[..]
+ ******The device integrates two 12-bit Digital Analog Converters that can
+ ******be used independently or simultaneously (dual mode):
  ***  (#) DAC channel1 with DAC_OUT1 (PA4) as output
  ***  (#) DAC channel2 with DAC_OUT2 (PA5) as output
  ***
  *** DAC Triggers ***
  ***  ====================
- *********[..]
- *********Digital to Analog conversion can be non-triggered using DAC_TRIGGER_NONE
- *********and DAC_OUT1/DAC_OUT2 is available once writing to DHRx register.
- *********[..]
- *********Digital to Analog conversion can be triggered by:
+ ******[..]
+ ******Digital to Analog conversion can be non-triggered using DAC_TRIGGER_NONE
+ ******and DAC_OUT1/DAC_OUT2 is available once writing to DHRx register.
+ ******[..]
+ ******Digital to Analog conversion can be triggered by:
  ***  (#) External event: EXTI Line 9 (any GPIOx_Pin9) using DAC_TRIGGER_EXT_IT9.
  ***      The used pin (GPIOx_Pin9) must be configured in input mode.
  ***
@@ -90,18 +90,18 @@
  ***     (#) DAC channel2 : mapped on DMA1 Stream6 channel7 which must be
  ***         already configured
  ***
- *********-@- For Dual mode and specific signal (Triangle and noise) generation please
+ ******-@- For Dual mode and specific signal (Triangle and noise) generation please
  ***    refer to Extension Features Driver description
  ***
  ***
  ##### How to use this driver #####
- ###############==============================================================================
- ###############[..]
- ###############(+) DAC APB clock must be enabled to get write access to DAC
+ ##########==============================================================================
+ ##########[..]
+ ##########(+) DAC APB clock must be enabled to get write access to DAC
  #####    registers using HAL_DAC_Init()
- ###############(+) Configure DAC_OUTx (DAC_OUT1: PA4, DAC_OUT2: PA5) in analog mode.
- ###############(+) Configure the DAC channel using HAL_DAC_ConfigChannel() function.
- ###############(+) Enable the DAC channel using HAL_DAC_Start() or HAL_DAC_Start_DMA functions
+ ##########(+) Configure DAC_OUTx (DAC_OUT1: PA4, DAC_OUT2: PA5) in analog mode.
+ ##########(+) Configure the DAC channel using HAL_DAC_ConfigChannel() function.
+ ##########(+) Enable the DAC channel using HAL_DAC_Start() or HAL_DAC_Start_DMA functions
  #####
  *** Polling mode IO operation ***
  *** =================================
@@ -135,7 +135,7 @@
  *** [..]
  ***  (@) You can refer to the DAC HAL driver header file for more useful macros
  ***
- *********@endverbatim
+ ******@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -214,12 +214,12 @@ static void DAC_DMAHalfConvCpltCh1(DMA_HandleTypeDef *hdma);
  * @verbatim
  * ==============================================================================
  ##### Initialization and de-initialization functions #####
- ###############==============================================================================
- ###############[..]  This section provides functions allowing to:
- ###############(+) Initialize and configure the DAC.
- ###############(+) De-initialize the DAC.
+ ##########==============================================================================
+ ##########[..]  This section provides functions allowing to:
+ ##########(+) Initialize and configure the DAC.
+ ##########(+) De-initialize the DAC.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -339,15 +339,15 @@ __weak void HAL_DAC_MspDeInit(DAC_HandleTypeDef *hdac)
  * @verbatim
  * ==============================================================================
  ##### IO operation functions #####
- ###############==============================================================================
- ###############[..]  This section provides functions allowing to:
- ###############(+) Start conversion.
- ###############(+) Stop conversion.
- ###############(+) Start conversion and enable DMA transfer.
- ###############(+) Stop conversion and disable DMA transfer.
- ###############(+) Get result of conversion.
+ ##########==============================================================================
+ ##########[..]  This section provides functions allowing to:
+ ##########(+) Start conversion.
+ ##########(+) Stop conversion.
+ ##########(+) Start conversion and enable DMA transfer.
+ ##########(+) Stop conversion and disable DMA transfer.
+ ##########(+) Get result of conversion.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -757,12 +757,12 @@ __weak void HAL_DAC_DMAUnderrunCallbackCh1(DAC_HandleTypeDef *hdac)
  * @verbatim
  * ==============================================================================
  ##### Peripheral Control functions #####
- ###############==============================================================================
- ###############[..]  This section provides functions allowing to:
- ###############(+) Configure channels.
- ###############(+) Set the specified data holding register value for DAC channel.
+ ##########==============================================================================
+ ##########[..]  This section provides functions allowing to:
+ ##########(+) Configure channels.
+ ##########(+) Set the specified data holding register value for DAC channel.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -869,13 +869,13 @@ HAL_StatusTypeDef HAL_DAC_SetValue(DAC_HandleTypeDef *hdac, uint32_t Channel, ui
  * @verbatim
  * ==============================================================================
  ##### Peripheral State and Errors functions #####
- ###############==============================================================================
- ###############[..]
- ###############This subsection provides functions allowing to
- ###############(+) Check the DAC state.
- ###############(+) Check the DAC Errors.
+ ##########==============================================================================
+ ##########[..]
+ ##########This subsection provides functions allowing to
+ ##########(+) Check the DAC state.
+ ##########(+) Check the DAC Errors.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 

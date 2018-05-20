@@ -79,6 +79,7 @@ Src/system_stm32f4xx.c
 CPP_SOURCES = \
 Src/hm-trp.cpp \
 Src/color.cpp \
+Src/sound_player.cpp \
 
 
 # ASM sources
@@ -142,7 +143,8 @@ C_INCLUDES =  \
 -IDrivers/CMSIS/Include \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
--IInc
+-I../../common-fw/Inc \
+-IInc \
 
 
 

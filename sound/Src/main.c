@@ -109,35 +109,7 @@ int main(void)
     MX_TIM6_Init();
     /* USER CODE BEGIN 2 */
 
-    sound_player.cmd(SOUND_CMD_SET_SOUND_SET_EN);
-    sound_player.cmd(SOUND_CMD_PLAY_ACTIVATED);
-    sound_player.cmd(SOUND_CMD_PLAY_GUN);
-    sound_player.cmd(SOUND_CMD_PLAY_DONT_GIVE_UP);
-    sound_player.cmd(SOUND_CMD_PLAY_GAME_OVER);
-    sound_player.cmd(SOUND_CMD_PLAY_GO);
-    sound_player.cmd(SOUND_CMD_PLAY_KEEP_GOING);
-    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_1);
-    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_2);
-    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_3);
-    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_4);
-    sound_player.cmd(SOUND_CMD_PLAY_NUMBER_5);
-    sound_player.cmd(SOUND_CMD_PLAY_PLAY);
-    sound_player.cmd(SOUND_CMD_PLAY_WELL_DONE);
-
-    /*sound_player.cmd(SOUND_CMD_SET_SOUND_SET_CZ);
-     * sound_player.cmd(SOUND_CMD_PLAY_ACTIVATED);
-     * sound_player.cmd(SOUND_CMD_PLAY_GUN);
-     * sound_player.cmd(SOUND_CMD_PLAY_DONT_GIVE_UP);
-     * sound_player.cmd(SOUND_CMD_PLAY_GAME_OVER);
-     * sound_player.cmd(SOUND_CMD_PLAY_GO);
-     * sound_player.cmd(SOUND_CMD_PLAY_KEEP_GOING);
-     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_1);
-     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_2);
-     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_3);
-     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_4);
-     * sound_player.cmd(SOUND_CMD_PLAY_NUMBER_5);
-     * sound_player.cmd(SOUND_CMD_PLAY_PLAY);
-     * sound_player.cmd(SOUND_CMD_PLAY_WELL_DONE);*/
+    sound_player.init();
 
 
     /* USER CODE END 2 */
@@ -148,11 +120,10 @@ int main(void)
     {
         /* USER CODE END WHILE */
 
-
         /* USER CODE BEGIN 3 */
     }
     /* USER CODE END 3 */
-} // main
+} /* main */
 
 /**
  * @brief System Clock Configuration
@@ -204,7 +175,7 @@ void SystemClock_Config(void)
 
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-} // SystemClock_Config
+} /* SystemClock_Config */
 
 /* DAC init function */
 static void MX_DAC_Init(void)

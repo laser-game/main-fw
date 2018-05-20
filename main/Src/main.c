@@ -42,6 +42,7 @@
 /* USER CODE BEGIN Includes */
 #include "hm-trp.hpp"
 #include "color.hpp"
+#include "sound_player.hpp"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -56,7 +57,7 @@ UART_HandleTypeDef huart6;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+SoundPlayer sound_player(&huart6);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -125,6 +126,37 @@ int main(void)
 
     color.rgb(0, 0, 255);
 
+
+    sound_player.play_activated();
+    HAL_Delay(5000);
+
+    sound_player.set_sound_set_en();
+    sound_player.play_number_5();
+    HAL_Delay(2000);
+    sound_player.play_number_4();
+    HAL_Delay(2000);
+    sound_player.play_number_3();
+    HAL_Delay(2000);
+    sound_player.play_number_2();
+    HAL_Delay(2000);
+    sound_player.play_number_1();
+    HAL_Delay(2000);
+    sound_player.play_play();
+    HAL_Delay(5000);
+
+    sound_player.set_sound_set_cz();
+    sound_player.play_number_5();
+    HAL_Delay(2000);
+    sound_player.play_number_4();
+    HAL_Delay(2000);
+    sound_player.play_number_3();
+    HAL_Delay(2000);
+    sound_player.play_number_2();
+    HAL_Delay(2000);
+    sound_player.play_number_1();
+    HAL_Delay(2000);
+    sound_player.play_play();
+    HAL_Delay(5000);
 
     /* USER CODE END 2 */
 

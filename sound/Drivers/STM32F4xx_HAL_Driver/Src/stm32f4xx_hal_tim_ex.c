@@ -12,43 +12,43 @@
  * @verbatim
  * ==============================================================================
  ##### TIMER Extended features #####
- ###############==============================================================================
- ###############[..]
- ###############The Timer Extension features include:
- ###############(#) Complementary outputs with programmable dead-time for :
+ ##########==============================================================================
+ ##########[..]
+ ##########The Timer Extension features include:
+ ##########(#) Complementary outputs with programmable dead-time for :
  #####  (++) Input Capture
  #####  (++) Output Compare
  #####  (++) PWM generation (Edge and Center-aligned Mode)
  #####  (++) One-pulse mode output
- ###############(#) Synchronization circuit to control the timer with external signals and to
+ ##########(#) Synchronization circuit to control the timer with external signals and to
  #####  interconnect several timers together.
- ###############(#) Break input to put the timer output signals in reset state or in a known state.
- ###############(#) Supports incremental (quadrature) encoder and hall-sensor circuitry for
+ ##########(#) Break input to put the timer output signals in reset state or in a known state.
+ ##########(#) Supports incremental (quadrature) encoder and hall-sensor circuitry for
  #####  positioning purposes
  #####
  ##### How to use this driver #####
- ###############==============================================================================
- ###############[..]
- ###############(#) Initialize the TIM low level resources by implementing the following functions
+ ##########==============================================================================
+ ##########[..]
+ ##########(#) Initialize the TIM low level resources by implementing the following functions
  #####   depending from feature used :
  #####     (++) Complementary Output Compare : HAL_TIM_OC_MspInit()
  #####     (++) Complementary PWM generation : HAL_TIM_PWM_MspInit()
  #####     (++) Complementary One-pulse mode output : HAL_TIM_OnePulse_MspInit()
  #####     (++) Hall Sensor output : HAL_TIM_HallSensor_MspInit()
  #####
- ###############(#) Initialize the TIM low level resources :
+ ##########(#) Initialize the TIM low level resources :
  #####  (##) Enable the TIM interface clock using __TIMx_CLK_ENABLE();
  #####  (##) TIM pins configuration
  #####      (+++) Enable the clock for the TIM GPIOs using the following function:
  #####           __GPIOx_CLK_ENABLE();
  #####      (+++) Configure these TIM pins in Alternate function mode using HAL_GPIO_Init();
  #####
- ###############(#) The external Clock can be configured, if needed (the default clock is the
+ ##########(#) The external Clock can be configured, if needed (the default clock is the
  #####   internal clock from the APBx), using the following function:
  #####   HAL_TIM_ConfigClockSource, the clock configuration should be done before
  #####   any start function.
  #####
- ###############(#) Configure the TIM in the desired functioning mode using one of the
+ ##########(#) Configure the TIM in the desired functioning mode using one of the
  #####  initialization function of this driver:
  #####  (++) HAL_TIMEx_HallSensor_Init and HAL_TIMEx_ConfigCommutationEvent: to use the
  #####       Timer Hall Sensor Interface and the commutation event with the corresponding
@@ -56,14 +56,14 @@
  #####       with the Hall sensor Interface and another Timer should be used to use
  #####       the commutation event).
  #####
- ###############(#) Activate the TIM peripheral using one of the start functions:
+ ##########(#) Activate the TIM peripheral using one of the start functions:
  #####     (++) Complementary Output Compare : HAL_TIMEx_OCN_Start(), HAL_TIMEx_OCN_Start_DMA(), HAL_TIMEx_OC_Start_IT()
  #####     (++) Complementary PWM generation : HAL_TIMEx_PWMN_Start(), HAL_TIMEx_PWMN_Start_DMA(), HAL_TIMEx_PWMN_Start_IT()
  #####     (++) Complementary One-pulse mode output : HAL_TIMEx_OnePulseN_Start(), HAL_TIMEx_OnePulseN_Start_IT()
  #####     (++) Hall Sensor output : HAL_TIMEx_HallSensor_Start(), HAL_TIMEx_HallSensor_Start_DMA(), HAL_TIMEx_HallSensor_Start_IT().
  #####
  #####
- ###############@endverbatim
+ ##########@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -135,19 +135,19 @@ static void TIM_CCxNChannelCmd(TIM_TypeDef *TIMx, uint32_t Channel, uint32_t Cha
  * @verbatim
  * ==============================================================================
  ##### Timer Hall Sensor functions #####
- ###############==============================================================================
- ###############[..]
- ###############This section provides functions allowing to:
- ###############(+) Initialize and configure TIM HAL Sensor.
- ###############(+) De-initialize TIM HAL Sensor.
- ###############(+) Start the Hall Sensor Interface.
- ###############(+) Stop the Hall Sensor Interface.
- ###############(+) Start the Hall Sensor Interface and enable interrupts.
- ###############(+) Stop the Hall Sensor Interface and disable interrupts.
- ###############(+) Start the Hall Sensor Interface and enable DMA transfers.
- ###############(+) Stop the Hall Sensor Interface and disable DMA transfers.
+ ##########==============================================================================
+ ##########[..]
+ ##########This section provides functions allowing to:
+ ##########(+) Initialize and configure TIM HAL Sensor.
+ ##########(+) De-initialize TIM HAL Sensor.
+ ##########(+) Start the Hall Sensor Interface.
+ ##########(+) Stop the Hall Sensor Interface.
+ ##########(+) Start the Hall Sensor Interface and enable interrupts.
+ ##########(+) Stop the Hall Sensor Interface and disable interrupts.
+ ##########(+) Start the Hall Sensor Interface and enable DMA transfers.
+ ##########(+) Stop the Hall Sensor Interface and disable DMA transfers.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -466,17 +466,17 @@ HAL_StatusTypeDef HAL_TIMEx_HallSensor_Stop_DMA(TIM_HandleTypeDef *htim)
  * @verbatim
  * ==============================================================================
  ##### Timer Complementary Output Compare functions #####
- ###############==============================================================================
- ###############[..]
- ###############This section provides functions allowing to:
- ###############(+) Start the Complementary Output Compare/PWM.
- ###############(+) Stop the Complementary Output Compare/PWM.
- ###############(+) Start the Complementary Output Compare/PWM and enable interrupts.
- ###############(+) Stop the Complementary Output Compare/PWM and disable interrupts.
- ###############(+) Start the Complementary Output Compare/PWM and enable DMA transfers.
- ###############(+) Stop the Complementary Output Compare/PWM and disable DMA transfers.
+ ##########==============================================================================
+ ##########[..]
+ ##########This section provides functions allowing to:
+ ##########(+) Start the Complementary Output Compare/PWM.
+ ##########(+) Stop the Complementary Output Compare/PWM.
+ ##########(+) Start the Complementary Output Compare/PWM and enable interrupts.
+ ##########(+) Stop the Complementary Output Compare/PWM and disable interrupts.
+ ##########(+) Start the Complementary Output Compare/PWM and enable DMA transfers.
+ ##########(+) Stop the Complementary Output Compare/PWM and disable DMA transfers.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -871,27 +871,27 @@ HAL_StatusTypeDef HAL_TIMEx_OCN_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Chann
  * @verbatim
  * ==============================================================================
  ##### Timer Complementary PWM functions #####
- ###############==============================================================================
- ###############[..]
- ###############This section provides functions allowing to:
- ###############(+) Start the Complementary PWM.
- ###############(+) Stop the Complementary PWM.
- ###############(+) Start the Complementary PWM and enable interrupts.
- ###############(+) Stop the Complementary PWM and disable interrupts.
- ###############(+) Start the Complementary PWM and enable DMA transfers.
- ###############(+) Stop the Complementary PWM and disable DMA transfers.
- ###############(+) Start the Complementary Input Capture measurement.
- ###############(+) Stop the Complementary Input Capture.
- ###############(+) Start the Complementary Input Capture and enable interrupts.
- ###############(+) Stop the Complementary Input Capture and disable interrupts.
- ###############(+) Start the Complementary Input Capture and enable DMA transfers.
- ###############(+) Stop the Complementary Input Capture and disable DMA transfers.
- ###############(+) Start the Complementary One Pulse generation.
- ###############(+) Stop the Complementary One Pulse.
- ###############(+) Start the Complementary One Pulse and enable interrupts.
- ###############(+) Stop the Complementary One Pulse and disable interrupts.
+ ##########==============================================================================
+ ##########[..]
+ ##########This section provides functions allowing to:
+ ##########(+) Start the Complementary PWM.
+ ##########(+) Stop the Complementary PWM.
+ ##########(+) Start the Complementary PWM and enable interrupts.
+ ##########(+) Stop the Complementary PWM and disable interrupts.
+ ##########(+) Start the Complementary PWM and enable DMA transfers.
+ ##########(+) Stop the Complementary PWM and disable DMA transfers.
+ ##########(+) Start the Complementary Input Capture measurement.
+ ##########(+) Stop the Complementary Input Capture.
+ ##########(+) Start the Complementary Input Capture and enable interrupts.
+ ##########(+) Stop the Complementary Input Capture and disable interrupts.
+ ##########(+) Start the Complementary Input Capture and enable DMA transfers.
+ ##########(+) Stop the Complementary Input Capture and disable DMA transfers.
+ ##########(+) Start the Complementary One Pulse generation.
+ ##########(+) Stop the Complementary One Pulse.
+ ##########(+) Start the Complementary One Pulse and enable interrupts.
+ ##########(+) Stop the Complementary One Pulse and disable interrupts.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -1284,15 +1284,15 @@ HAL_StatusTypeDef HAL_TIMEx_PWMN_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Chan
  * @verbatim
  * ==============================================================================
  ##### Timer Complementary One Pulse functions #####
- ###############==============================================================================
- ###############[..]
- ###############This section provides functions allowing to:
- ###############(+) Start the Complementary One Pulse generation.
- ###############(+) Stop the Complementary One Pulse.
- ###############(+) Start the Complementary One Pulse and enable interrupts.
- ###############(+) Stop the Complementary One Pulse and disable interrupts.
+ ##########==============================================================================
+ ##########[..]
+ ##########This section provides functions allowing to:
+ ##########(+) Start the Complementary One Pulse generation.
+ ##########(+) Stop the Complementary One Pulse.
+ ##########(+) Start the Complementary One Pulse and enable interrupts.
+ ##########(+) Stop the Complementary One Pulse and disable interrupts.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -1428,17 +1428,17 @@ HAL_StatusTypeDef HAL_TIMEx_OnePulseN_Stop_IT(TIM_HandleTypeDef *htim, uint32_t 
  * @verbatim
  * ==============================================================================
  ##### Peripheral Control functions #####
- ###############==============================================================================
- ###############[..]
- ###############This section provides functions allowing to:
- ###############(+) Configure The Input Output channels for OC, PWM, IC or One Pulse mode.
- ###############(+) Configure External Clock source.
- ###############(+) Configure Complementary channels, break features and dead time.
- ###############(+) Configure Master and the Slave synchronization.
- ###############(+) Configure the commutation event in case of use of the Hall sensor interface.
- ###############(+) Configure the DMA Burst Mode.
+ ##########==============================================================================
+ ##########[..]
+ ##########This section provides functions allowing to:
+ ##########(+) Configure The Input Output channels for OC, PWM, IC or One Pulse mode.
+ ##########(+) Configure External Clock source.
+ ##########(+) Configure Complementary channels, break features and dead time.
+ ##########(+) Configure Master and the Slave synchronization.
+ ##########(+) Configure the commutation event in case of use of the Hall sensor interface.
+ ##########(+) Configure the DMA Burst Mode.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -1757,13 +1757,13 @@ HAL_StatusTypeDef HAL_TIMEx_RemapConfig(TIM_HandleTypeDef *htim, uint32_t Remap)
  * @verbatim
  * ==============================================================================
  ##### Extension Callbacks functions #####
- ###############==============================================================================
- ###############[..]
- ###############This section provides Extension TIM callback functions:
- ###############(+) Timer Commutation callback
- ###############(+) Timer Break callback
+ ##########==============================================================================
+ ##########[..]
+ ##########This section provides Extension TIM callback functions:
+ ##########(+) Timer Commutation callback
+ ##########(+) Timer Break callback
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -1809,12 +1809,12 @@ __weak void HAL_TIMEx_BreakCallback(TIM_HandleTypeDef *htim)
  * @verbatim
  * ==============================================================================
  ##### Extension Peripheral State functions #####
- ###############==============================================================================
- ###############[..]
- ###############This subsection permits to get in run-time the status of the peripheral
- ###############and the data flow.
+ ##########==============================================================================
+ ##########[..]
+ ##########This subsection permits to get in run-time the status of the peripheral
+ ##########and the data flow.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 

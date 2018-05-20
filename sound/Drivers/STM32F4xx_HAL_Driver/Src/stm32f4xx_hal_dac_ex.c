@@ -11,15 +11,15 @@
  * @verbatim
  * ==============================================================================
  ##### How to use this driver #####
- ###############==============================================================================
- ###############[..]
- ###############(+) When Dual mode is enabled (i.e DAC Channel1 and Channel2 are used simultaneously) :
+ ##########==============================================================================
+ ##########[..]
+ ##########(+) When Dual mode is enabled (i.e DAC Channel1 and Channel2 are used simultaneously) :
  #####    Use HAL_DACEx_DualGetValue() to get digital data to be converted and use
  #####    HAL_DACEx_DualSetValue() to set digital value to converted simultaneously in Channel 1 and Channel 2.
- ###############(+) Use HAL_DACEx_TriangleWaveGenerate() to generate Triangle signal.
- ###############(+) Use HAL_DACEx_NoiseWaveGenerate() to generate Noise signal.
+ ##########(+) Use HAL_DACEx_TriangleWaveGenerate() to generate Triangle signal.
+ ##########(+) Use HAL_DACEx_NoiseWaveGenerate() to generate Noise signal.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -87,16 +87,16 @@
  * @verbatim
  * ==============================================================================
  ##### Extended features functions #####
- ###############==============================================================================
- ###############[..]  This section provides functions allowing to:
- ###############(+) Start conversion.
- ###############(+) Stop conversion.
- ###############(+) Start conversion and enable DMA transfer.
- ###############(+) Stop conversion and disable DMA transfer.
- ###############(+) Get result of conversion.
- ###############(+) Get result of dual mode conversion.
+ ##########==============================================================================
+ ##########[..]  This section provides functions allowing to:
+ ##########(+) Start conversion.
+ ##########(+) Stop conversion.
+ ##########(+) Start conversion and enable DMA transfer.
+ ##########(+) Stop conversion and disable DMA transfer.
+ ##########(+) Get result of conversion.
+ ##########(+) Get result of dual mode conversion.
  #####
- ###############@endverbatim
+ ##########@endverbatim
  * @{
  */
 
