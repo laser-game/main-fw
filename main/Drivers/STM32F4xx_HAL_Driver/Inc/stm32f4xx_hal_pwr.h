@@ -98,8 +98,8 @@ typedef struct {
 #define PWR_PVDLEVEL_4 PWR_CR_PLS_LEV4
 #define PWR_PVDLEVEL_5 PWR_CR_PLS_LEV5
 #define PWR_PVDLEVEL_6 PWR_CR_PLS_LEV6
-#define PWR_PVDLEVEL_7 PWR_CR_PLS_LEV7                 /* External input analog voltage
-                                                        * (Compare internally to VREFINT) */
+#define PWR_PVDLEVEL_7 PWR_CR_PLS_LEV7 /* External input analog voltage
+                                        * (Compare internally to VREFINT) */
 
 /**
  * @}

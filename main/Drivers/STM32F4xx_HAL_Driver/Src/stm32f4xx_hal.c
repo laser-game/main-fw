@@ -8,16 +8,16 @@
  * @verbatim
  * ==============================================================================
  ##### How to use this driver #####
- #####==============================================================================
- #####[..]
- #####The common HAL driver contains a set of generic and common APIs that can be
- #####used by the PPP peripheral drivers and the user to start using the HAL.
- #####[..]
- #####The HAL contains two APIs' categories:
+ ##########==============================================================================
+ ##########[..]
+ ##########The common HAL driver contains a set of generic and common APIs that can be
+ ##########used by the PPP peripheral drivers and the user to start using the HAL.
+ ##########[..]
+ ##########The HAL contains two APIs' categories:
  #####   (+) Common HAL APIs
  #####   (+) Services HAL APIs
  #####
- #####@endverbatim
+ ##########@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -132,13 +132,13 @@ HAL_TickFreqTypeDef uwTickFreq = HAL_TICK_FREQ_DEFAULT; /* 1KHz */
  * @verbatim
  * ===============================================================================
  ##### Initialization and Configuration functions #####
- #####===============================================================================
- #####[..]  This section provides functions allowing to:
- #####(+) Initializes the Flash interface the NVIC allocation and initial clock
+ ##########===============================================================================
+ ##########[..]  This section provides functions allowing to:
+ ##########(+) Initializes the Flash interface the NVIC allocation and initial clock
  #####    configuration. It initializes the systick also when timeout is needed
  #####    and the backup domain when enabled.
- #####(+) De-Initializes common part of the HAL.
- #####(+) Configure the time base source to have 1ms time base with a dedicated
+ ##########(+) De-Initializes common part of the HAL.
+ ##########(+) Configure the time base source to have 1ms time base with a dedicated
  #####    Tick interrupt priority.
  #####  (++) SysTick timer is used by default as source of time base, but user
  #####       can eventually implement his proper time base source (a general purpose
@@ -155,7 +155,7 @@ HAL_TickFreqTypeDef uwTickFreq = HAL_TICK_FREQ_DEFAULT; /* 1KHz */
  #####      ISR process will be blocked.
  ##### (++) functions affecting time base configurations are declared as __weak
  #####       to make  override possible  in case of other  implementations in user file.
- #####@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -305,20 +305,20 @@ __weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
  * @verbatim
  * ===============================================================================
  ##### HAL Control functions #####
- #####===============================================================================
- #####[..]  This section provides functions allowing to:
- #####(+) Provide a tick value in millisecond
- #####(+) Provide a blocking delay in millisecond
- #####(+) Suspend the time base source interrupt
- #####(+) Resume the time base source interrupt
- #####(+) Get the HAL API driver version
- #####(+) Get the device identifier
- #####(+) Get the device revision identifier
- #####(+) Enable/Disable Debug module during SLEEP mode
- #####(+) Enable/Disable Debug module during STOP mode
- #####(+) Enable/Disable Debug module during STANDBY mode
+ ##########===============================================================================
+ ##########[..]  This section provides functions allowing to:
+ ##########(+) Provide a tick value in millisecond
+ ##########(+) Provide a blocking delay in millisecond
+ ##########(+) Suspend the time base source interrupt
+ ##########(+) Resume the time base source interrupt
+ ##########(+) Get the HAL API driver version
+ ##########(+) Get the device identifier
+ ##########(+) Get the device revision identifier
+ ##########(+) Enable/Disable Debug module during SLEEP mode
+ ##########(+) Enable/Disable Debug module during STOP mode
+ ##########(+) Enable/Disable Debug module during STANDBY mode
  #####
- #####@endverbatim
+ ##########@endverbatim
  * @{
  */
 

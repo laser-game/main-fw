@@ -153,7 +153,7 @@ extern "C" {
 #endif /* EXTERNAL_CLOCK_VALUE */
 
 /* Tip: To avoid modifying this file each time you need to use different HSE,
-*  ===  you can define the HSE value in your toolchain compiler preprocessor. */
+ *  ===  you can define the HSE value in your toolchain compiler preprocessor. */
 
 /* ########################### System Configuration ######################### */
 
