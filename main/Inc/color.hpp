@@ -9,11 +9,15 @@ using namespace std;
 
 class Color
 {
+private:
+    TIM_HandleTypeDef *htim;
+    uint32_t tim_channel_r;
+    uint32_t tim_channel_g;
+    uint32_t tim_channel_b;
 public:
-    Color();
-    void pwm_r_enable(bool ena = true);
-    void pwm_g_enable(bool ena = true);
-    void pwm_b_enable(bool ena = true);
+    Color(TIM_HandleTypeDef *htim, uint32_t tim_channel_r, uint32_t tim_channel_g, uint32_t tim_channel_b);
+    void enable(void);
+    void disable(void);
     void rgb(uint8_t r, uint8_t g, uint8_t b);
 };
 

@@ -123,12 +123,14 @@ int main(void)
     /* USER CODE BEGIN 2 */
     global->hmtrp = new HMTRP(&huart2, 9600);
     global->radio_buffer_rx = new CircularBuffer;
+    global->color = new Color(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
 
-
-    // HMTRP rf_module;
-    Color color;
-
-    color.rgb(0, 0, 255);
+    HAL_Delay(1000);
+    global->color->rgb(255, 0, 0);
+    HAL_Delay(1000);
+    global->color->rgb(0, 255, 0);
+    HAL_Delay(1000);
+    global->color->rgb(0, 0, 255);
 
 
     // sound_player.play_activated();

@@ -2,10 +2,13 @@
 #define __GLOBALS_INLUDED__
 
 #include "stm32f4xx_hal.h"
-#include "hm-trp.hpp"
+
 #include "cm-circular-buffer.hpp"
 #include "cm-crc.hpp"
 #include "cm-packet.hpp"
+
+#include "hm-trp.hpp"
+#include "color.hpp"
 
 using namespace std;
 
@@ -17,6 +20,7 @@ public:
     static Global * instance();
     HMTRP *hmtrp;
     CircularBuffer *radio_buffer_rx;
+    Color *color;
 };
 
 extern Global *global;
