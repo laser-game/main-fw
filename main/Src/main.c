@@ -41,9 +41,6 @@
 
 /* USER CODE BEGIN Includes */
 #include "globals.hpp"
-#include "hm-trp.hpp"
-#include "color.hpp"
-#include "sound_player.hpp"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -58,7 +55,6 @@ UART_HandleTypeDef huart6;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-SoundPlayer sound_player(&huart6);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -123,7 +119,8 @@ int main(void)
     /* USER CODE BEGIN 2 */
     global->hmtrp = new HMTRP(&huart2, 9600);
     global->radio_buffer_rx = new CircularBuffer;
-    global->color = new Color(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
+    global->color        = new Color(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
+    global->sound_player = new SoundPlayer(&huart6);
 
     HAL_Delay(1000);
     global->color->rgb(255, 0, 0);
@@ -133,7 +130,7 @@ int main(void)
     global->color->rgb(0, 0, 255);
 
 
-    // sound_player.play_activated();
+    global->sound_player->play_activated();
     // HAL_Delay(5000);
 
     /*sound_player.set_sound_set_en();

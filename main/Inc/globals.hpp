@@ -9,6 +9,7 @@
 
 #include "hm-trp.hpp"
 #include "color.hpp"
+#include "sound-player.hpp"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ public:
     HMTRP *hmtrp;
     CircularBuffer *radio_buffer_rx;
     Color *color;
+    SoundPlayer *sound_player;
 };
 
 extern Global *global;

@@ -2,22 +2,16 @@
 #define __SOUND_PLAYER_INCLUDED__
 
 #include "stm32f4xx_hal.h"
+
+#include "cm-uart.hpp"
 #include "cm-sound.hpp"
 
 
-class SoundPlayer
+class SoundPlayer : public UART
 {
-private:
-    UART_HandleTypeDef *uart;
-    uint8_t uart_tx_buffer;
 public:
-    SoundPlayer(UART_HandleTypeDef *uart);
-
-    inline void tx(uint8_t data)
-    {
-        uart_tx_buffer = data;
-        HAL_UART_Transmit(uart, &uart_tx_buffer, 1, 0xFF);
-    }
+    inline SoundPlayer(UART_HandleTypeDef *huart) : UART(huart)
+    { }
 
     inline bool is_sound_playing(void)
     {
@@ -104,8 +98,5 @@ public:
         tx(SOUND_CMD_PLAY_WELL_DONE);
     }
 };
-
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
 
 #endif // ifndef __SOUND_PLAYER_INCLUDED__
