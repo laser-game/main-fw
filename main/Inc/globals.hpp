@@ -18,11 +18,21 @@ class Global
 private:
     Global(){ };
 public:
-    static Global * instance();
+    inline static Global * instance()
+    {
+        static Global object;
+        return &object;
+    }
+
     HMTRP *hmtrp;
     CircularBuffer *radio_buffer_rx;
     Color *color;
     SoundPlayer *sound_player;
+
+    inline void init(void)
+    {
+        CRC32::init();
+    }
 };
 
 extern Global *global;

@@ -121,6 +121,7 @@ int main(void)
     global->radio_buffer_rx = new CircularBuffer;
     global->color        = new Color(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
     global->sound_player = new SoundPlayer(&huart6);
+    global->init();
 
     HAL_Delay(1000);
     global->color->rgb(255, 0, 0);
