@@ -49,10 +49,14 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define RF_ENABLE_Pin       GPIO_PIN_11
-#define RF_ENABLE_GPIO_Port GPIOA
-#define RF_CONFIG_Pin       GPIO_PIN_12
-#define RF_CONFIG_GPIO_Port GPIOA
+#define SOUND_SLEEP_Pin            GPIO_PIN_8
+#define SOUND_SLEEP_GPIO_Port      GPIOC
+#define SOUND_IS_PLAYING_Pin       GPIO_PIN_9
+#define SOUND_IS_PLAYING_GPIO_Port GPIOC
+#define RF_ENABLE_Pin              GPIO_PIN_11
+#define RF_ENABLE_GPIO_Port        GPIOA
+#define RF_CONFIG_Pin              GPIO_PIN_12
+#define RF_CONFIG_GPIO_Port        GPIOA
 
 /* ########################## Assert Selection ############################## */
 

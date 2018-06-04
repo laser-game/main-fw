@@ -40,6 +40,7 @@
 #include "stm32f4xx_hal.h"
 
 /* USER CODE BEGIN Includes */
+#include "globals.hpp"
 #include "hm-trp.hpp"
 #include "color.hpp"
 #include "sound_player.hpp"
@@ -120,43 +121,53 @@ int main(void)
     MX_USART3_UART_Init();
     MX_USART6_UART_Init();
     /* USER CODE BEGIN 2 */
+    global->hmtrp = new HMTRP(&huart2, 9600);
+    global->radio_buffer_rx = new CircularBuffer;
 
-    HMTRP rf_module;
+
+    // HMTRP rf_module;
     Color color;
 
     color.rgb(0, 0, 255);
 
 
-    sound_player.play_activated();
-    HAL_Delay(5000);
+    // sound_player.play_activated();
+    // HAL_Delay(5000);
 
-    sound_player.set_sound_set_en();
-    sound_player.play_number_5();
-    HAL_Delay(2000);
-    sound_player.play_number_4();
-    HAL_Delay(2000);
-    sound_player.play_number_3();
-    HAL_Delay(2000);
-    sound_player.play_number_2();
-    HAL_Delay(2000);
-    sound_player.play_number_1();
-    HAL_Delay(2000);
-    sound_player.play_play();
-    HAL_Delay(5000);
+    /*sound_player.set_sound_set_en();
+     * sound_player.play_number_5();
+     * HAL_Delay(2000);
+     * sound_player.play_number_4();
+     * HAL_Delay(2000);
+     * sound_player.play_number_3();
+     * HAL_Delay(2000);
+     * sound_player.play_number_2();
+     * HAL_Delay(2000);
+     * sound_player.play_number_1();
+     * HAL_Delay(2000);
+     * sound_player.play_play();
+     * HAL_Delay(5000);
+     *
+     * sound_player.set_sound_set_cz();
+     * sound_player.play_number_5();
+     * HAL_Delay(2000);
+     * sound_player.play_number_4();
+     * HAL_Delay(2000);
+     * sound_player.play_number_3();
+     * HAL_Delay(2000);
+     * sound_player.play_number_2();
+     * HAL_Delay(2000);
+     * sound_player.play_number_1();
+     * HAL_Delay(2000);
+     * sound_player.play_play();
+     * HAL_Delay(5000);*/
 
-    sound_player.set_sound_set_cz();
-    sound_player.play_number_5();
-    HAL_Delay(2000);
-    sound_player.play_number_4();
-    HAL_Delay(2000);
-    sound_player.play_number_3();
-    HAL_Delay(2000);
-    sound_player.play_number_2();
-    HAL_Delay(2000);
-    sound_player.play_number_1();
-    HAL_Delay(2000);
-    sound_player.play_play();
-    HAL_Delay(5000);
+    /*sound_player.play_keep_going();
+     * while (sound_player.is_sound_playing())
+     * {
+     *  color.rgb(0,255,0);
+     * }
+     * sound_player.play_game_over();*/
 
     /* USER CODE END 2 */
 
@@ -378,7 +389,7 @@ static void MX_GPIO_Init(void)
     __HAL_RCC_GPIOB_CLK_ENABLE();
 
     /*Configure GPIO pin Output Level */
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_12, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOC, SOUND_SLEEP_Pin | GPIO_PIN_12, GPIO_PIN_RESET);
 
     /*Configure GPIO pin Output Level */
     HAL_GPIO_WritePin(GPIOA, RF_ENABLE_Pin | RF_CONFIG_Pin, GPIO_PIN_RESET);
@@ -390,9 +401,9 @@ static void MX_GPIO_Init(void)
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
     /*Configure GPIO pins : PC14 PC15 PC0 PC1
-     *                       PC2 PC3 */
+     *                       PC2 PC3 SOUND_IS_PLAYING_Pin */
     GPIO_InitStruct.Pin = GPIO_PIN_14 | GPIO_PIN_15 | GPIO_PIN_0 | GPIO_PIN_1
-      | GPIO_PIN_2 | GPIO_PIN_3;
+      | GPIO_PIN_2 | GPIO_PIN_3 | SOUND_IS_PLAYING_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -403,8 +414,8 @@ static void MX_GPIO_Init(void)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
 
-    /*Configure GPIO pins : PC8 PC9 PC12 */
-    GPIO_InitStruct.Pin   = GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_12;
+    /*Configure GPIO pins : SOUND_SLEEP_Pin PC12 */
+    GPIO_InitStruct.Pin   = SOUND_SLEEP_Pin | GPIO_PIN_12;
     GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull  = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

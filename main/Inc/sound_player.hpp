@@ -2,7 +2,7 @@
 #define __SOUND_PLAYER_INCLUDED__
 
 #include "stm32f4xx_hal.h"
-#include "cm_sound.hpp"
+#include "cm-sound.hpp"
 
 
 class SoundPlayer
@@ -17,6 +17,11 @@ public:
     {
         uart_tx_buffer = data;
         HAL_UART_Transmit(uart, &uart_tx_buffer, 1, 0xFF);
+    }
+
+    inline bool is_sound_playing(void)
+    {
+        return (HAL_GPIO_ReadPin(SOUND_IS_PLAYING_GPIO_Port, SOUND_IS_PLAYING_Pin) == GPIO_PIN_SET) ? true : false; // TODO removed true and false
     }
 
     inline void set_sound_set_cz(void)
