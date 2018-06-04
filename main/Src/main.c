@@ -117,11 +117,15 @@ int main(void)
     MX_USART3_UART_Init();
     MX_USART6_UART_Init();
     /* USER CODE BEGIN 2 */
-    global->hmtrp = new HMTRP(&huart2, 9600);
+    global->debug = new UART(&huart4);
+    global->hmtrp = new HMTRP(&huart1, 9600);
     global->radio_buffer_rx = new CircularBuffer;
     global->color        = new Color(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
     global->sound_player = new SoundPlayer(&huart6);
+    global->vest         = new Vest;
     global->init();
+
+    global->debug->tx("START");
 
     HAL_Delay(1000);
     global->color->rgb(255, 0, 0);
@@ -132,6 +136,7 @@ int main(void)
 
 
     global->sound_player->play_activated();
+
     // HAL_Delay(5000);
 
     /*sound_player.set_sound_set_en();
@@ -178,6 +183,9 @@ int main(void)
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
+        global->hmtrp->tx(global->vest->get_address());
+        global->debug->tx(global->vest->get_address());
+        HAL_Delay(500);
     }
     /* USER CODE END 3 */
 } /* main */
@@ -401,17 +409,17 @@ static void MX_GPIO_Init(void)
     HAL_GPIO_Init(BTN_GPIO_Port, &GPIO_InitStruct);
 
     /*Configure GPIO pins : A7_Pin A6_Pin A3_Pin A2_Pin
-     *                       A1_Pin A0_Pin SOUND_IS_PLAYING_Pin */
+     *                       A1_Pin A0_Pin */
     GPIO_InitStruct.Pin = A7_Pin | A6_Pin | A3_Pin | A2_Pin
-      | A1_Pin | A0_Pin | SOUND_IS_PLAYING_Pin;
+      | A1_Pin | A0_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
     /*Configure GPIO pins : A5_Pin A4_Pin */
     GPIO_InitStruct.Pin  = A5_Pin | A4_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
     HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
 
     /*Configure GPIO pins : SOUND_SLEEP_Pin PC12 */
@@ -420,6 +428,12 @@ static void MX_GPIO_Init(void)
     GPIO_InitStruct.Pull  = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    /*Configure GPIO pin : SOUND_IS_PLAYING_Pin */
+    GPIO_InitStruct.Pin  = SOUND_IS_PLAYING_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(SOUND_IS_PLAYING_GPIO_Port, &GPIO_InitStruct);
 
     /*Configure GPIO pin : PA8 */
     GPIO_InitStruct.Pin  = GPIO_PIN_8;

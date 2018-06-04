@@ -6,10 +6,12 @@
 #include "cm-circular-buffer.hpp"
 #include "cm-crc.hpp"
 #include "cm-packet.hpp"
+#include "cm-uart.hpp"
 
 #include "hm-trp.hpp"
 #include "color.hpp"
 #include "sound-player.hpp"
+#include "vest.hpp"
 
 using namespace std;
 
@@ -28,6 +30,8 @@ public:
     CircularBuffer *radio_buffer_rx;
     Color *color;
     SoundPlayer *sound_player;
+    Vest *vest;
+    UART *debug;
 
     inline void init(void)
     {
