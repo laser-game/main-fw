@@ -76,17 +76,17 @@
  * @verbatim
  * ===============================================================================
  ##### Extended Peripheral Control functions  #####
- #####===============================================================================
- #####[..]
- #####This subsection provides a set of functions allowing to control the RCC Clocks
- #####frequencies.
- #####[..]
- #####(@) Important note: Care must be taken when HAL_RCCEx_PeriphCLKConfig() is used to
+ ##########===============================================================================
+ ##########[..]
+ ##########This subsection provides a set of functions allowing to control the RCC Clocks
+ ##########frequencies.
+ ##########[..]
+ ##########(@) Important note: Care must be taken when HAL_RCCEx_PeriphCLKConfig() is used to
  #####  select the RTC clock source; in this case the Backup domain will be reset in
  #####  order to modify the RTC Clock source, as consequence RTC registers (including
  #####  the backup registers) and RCC_BDCR register are set to their reset values.
  #####
- #####@endverbatim
+ ##########@endverbatim
  * @{
  */
 
@@ -2559,7 +2559,7 @@ HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef *PeriphClkI
         #  if defined(STM32F411xE)
         assert_param(IS_RCC_PLLI2SM_VALUE(PeriphClkInit->PLLI2S.PLLI2SM));
         #  endif /* STM32F411xE */
-               /* Disable the PLLI2S */
+                 /* Disable the PLLI2S */
         __HAL_RCC_PLLI2S_DISABLE();
         /* Get tick */
         tickstart = HAL_GetTick();
@@ -2761,7 +2761,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
                         vcoinput = (uint32_t) (HSI_VALUE / (uint32_t) (RCC->PLLCFGR & RCC_PLLCFGR_PLLM));
                     }
                     #  endif /* STM32F411xE */
-                           /* PLLI2S_VCO Output = PLLI2S_VCO Input * PLLI2SN */
+                             /* PLLI2S_VCO Output = PLLI2S_VCO Input * PLLI2SN */
                     vcooutput = (uint32_t) (vcoinput * (((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SN) >> 6U) & (RCC_PLLI2SCFGR_PLLI2SN >> 6U)));
                     /* I2S_CLK = PLLI2S_VCO Output/PLLI2SR */
                     frequency = (uint32_t) (vcooutput / (((RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SR) >> 28U) & (RCC_PLLI2SCFGR_PLLI2SR >> 28U)));
@@ -2818,11 +2818,11 @@ void HAL_RCCEx_SelectLSEMode(uint8_t Mode)
  * @verbatim
  * ===============================================================================
  ##### Extended clock management functions  #####
- #####===============================================================================
- #####[..]
- #####This subsection provides a set of functions allowing to control the
- #####activation or deactivation of PLLI2S, PLLSAI.
- #####@endverbatim
+ ##########===============================================================================
+ ##########[..]
+ ##########This subsection provides a set of functions allowing to control the
+ ##########activation or deactivation of PLLI2S, PLLSAI.
+ ##########@endverbatim
  * @{
  */
 

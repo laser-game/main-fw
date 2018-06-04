@@ -27,7 +27,7 @@ void Color::disable(void)
 
 void Color::rgb(uint8_t r, uint8_t g, uint8_t b)
 {
-    *((uint32_t *)((uint8_t *)&htim->Instance->CCR1 + tim_channel_r)) = r;
-    *((uint32_t *)((uint8_t *)&htim->Instance->CCR1 + tim_channel_g)) = g;
-    *((uint32_t *)((uint8_t *)&htim->Instance->CCR1 + tim_channel_b)) = b;
+    *((uint32_t *) ((uint8_t *) &htim->Instance->CCR1 + tim_channel_r)) = r;
+    *((uint32_t *) ((uint8_t *) &htim->Instance->CCR1 + tim_channel_g)) = g;
+    *((uint32_t *) ((uint8_t *) &htim->Instance->CCR1 + tim_channel_b)) = b;
 }

@@ -10,11 +10,11 @@
  * @verbatim
  * ==============================================================================
  ##### APIs executed from Internal RAM #####
- #####==============================================================================
- #####[..]
+ ##########==============================================================================
+ ##########[..]
  *** ARM Compiler ***
- ***--------------------
- ***[..] RAM functions are defined using the toolchain options.
+ ******--------------------
+ ******[..] RAM functions are defined using the toolchain options.
  ***     Functions that are be executed in RAM should reside in a separate
  ***     source module. Using the 'Options for File' dialog you can simply change
  ***     the 'Code / Const' area of a module to a memory space in physical RAM.
@@ -22,15 +22,15 @@
  ***     Options for Target' dialog.
  ***
  *** ICCARM Compiler ***
- ***-----------------------
- ***[..] RAM functions are defined using a specific toolchain keyword "__ramfunc".
+ ******-----------------------
+ ******[..] RAM functions are defined using a specific toolchain keyword "__ramfunc".
  ***
  *** GNU Compiler ***
- ***--------------------
- ***[..] RAM functions are defined using a specific toolchain attribute
+ ******--------------------
+ ******[..] RAM functions are defined using a specific toolchain attribute
  ***     "__attribute__((section(".RamFunc")))".
  ***
- ***@endverbatim
+ ******@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -94,12 +94,12 @@
  *
  * ===============================================================================
  ##### ramfunc functions #####
- #####===============================================================================
- #####[..]
- #####This subsection provides a set of functions that should be executed from RAM
- #####transfers.
+ ##########===============================================================================
+ ##########[..]
+ ##########This subsection provides a set of functions that should be executed from RAM
+ ##########transfers.
  #####
- #####@endverbatim
+ ##########@endverbatim
  * @{
  */
 
