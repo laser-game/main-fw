@@ -10,9 +10,9 @@
  * @verbatim
  * ==============================================================================
  ##### Flash Extension features #####
- ##########==============================================================================
+ #####==============================================================================
  #####
- ##########[..] Comparing to other previous devices, the FLASH interface for STM32F427xx/437xx and
+ #####[..] Comparing to other previous devices, the FLASH interface for STM32F427xx/437xx and
  ##### STM32F429xx/439xx devices contains the following additional features
  #####
  ##### (+) Capacity up to 2 Mbyte with dual bank architecture supporting read-while-write
@@ -21,11 +21,11 @@
  ##### (+) PCROP protection for all banks
  #####
  ##### How to use this driver #####
- ##########==============================================================================
- ##########[..] This driver provides functions to configure and program the FLASH memory
+ #####==============================================================================
+ #####[..] This driver provides functions to configure and program the FLASH memory
  ##### of all STM32F427xx/437xx, STM32F429xx/439xx, STM32F469xx/479xx and STM32F446xx
  ##### devices. It includes
- ##########(#) FLASH Memory Erase functions:
+ #####(#) FLASH Memory Erase functions:
  #####     (++) Lock and Unlock the FLASH interface using HAL_FLASH_Unlock() and
  #####          HAL_FLASH_Lock() functions
  #####     (++) Erase function: Erase sector, erase all sectors
@@ -33,19 +33,19 @@
  #####       (+++) Polling Mode using HAL_FLASHEx_Erase()
  #####       (+++) Interrupt Mode using HAL_FLASHEx_Erase_IT()
  #####
- ##########(#) Option Bytes Programming functions: Use HAL_FLASHEx_OBProgram() to :
+ #####(#) Option Bytes Programming functions: Use HAL_FLASHEx_OBProgram() to :
  #####     (++) Set/Reset the write protection
  #####     (++) Set the Read protection Level
  #####     (++) Set the BOR level
  #####     (++) Program the user Option Bytes
- ##########(#) Advanced Option Bytes Programming functions: Use HAL_FLASHEx_AdvOBProgram() to :
+ #####(#) Advanced Option Bytes Programming functions: Use HAL_FLASHEx_AdvOBProgram() to :
  ##### (++) Extended space (bank 2) erase function
  ##### (++) Full FLASH space (2 Mo) erase (bank 1 and bank 2)
  ##### (++) Dual Boot activation
  ##### (++) Write protection configuration for bank 2
  ##### (++) PCROP protection configuration and control for both banks
  #####
- ##########@endverbatim
+ #####@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -163,12 +163,12 @@ extern HAL_StatusTypeDef         FLASH_WaitForLastOperation(uint32_t Timeout);
  * @verbatim
  * ===============================================================================
  ##### Extended programming operation functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to manage the Extension FLASH
- ##########programming operations.
+ #####===============================================================================
+ #####[..]
+ #####This subsection provides a set of functions allowing to manage the Extension FLASH
+ #####programming operations.
  #####
- ##########@endverbatim
+ #####@endverbatim
  * @{
  */
 

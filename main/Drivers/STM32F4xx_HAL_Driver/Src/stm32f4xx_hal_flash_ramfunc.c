@@ -10,11 +10,11 @@
  * @verbatim
  * ==============================================================================
  ##### APIs executed from Internal RAM #####
- ##########==============================================================================
- ##########[..]
+ #####==============================================================================
+ #####[..]
  *** ARM Compiler ***
- ******--------------------
- ******[..] RAM functions are defined using the toolchain options.
+ ***--------------------
+ ***[..] RAM functions are defined using the toolchain options.
  ***     Functions that are be executed in RAM should reside in a separate
  ***     source module. Using the 'Options for File' dialog you can simply change
  ***     the 'Code / Const' area of a module to a memory space in physical RAM.
@@ -22,15 +22,15 @@
  ***     Options for Target' dialog.
  ***
  *** ICCARM Compiler ***
- ******-----------------------
- ******[..] RAM functions are defined using a specific toolchain keyword "__ramfunc".
+ ***-----------------------
+ ***[..] RAM functions are defined using a specific toolchain keyword "__ramfunc".
  ***
  *** GNU Compiler ***
- ******--------------------
- ******[..] RAM functions are defined using a specific toolchain attribute
+ ***--------------------
+ ***[..] RAM functions are defined using a specific toolchain attribute
  ***     "__attribute__((section(".RamFunc")))".
  ***
- ******@endverbatim
+ ***@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -94,12 +94,12 @@
  *
  * ===============================================================================
  ##### ramfunc functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection provides a set of functions that should be executed from RAM
- ##########transfers.
+ #####===============================================================================
+ #####[..]
+ #####This subsection provides a set of functions that should be executed from RAM
+ #####transfers.
  #####
- ##########@endverbatim
+ #####@endverbatim
  * @{
  */
 
@@ -108,9 +108,9 @@
  * @note  This mode is only available for STM32F41xxx/STM32F446xx devices.
  * @note  This mode couldn't be set while executing with the flash itself.
  *        It should be done with specific routine executed from RAM.
- * @retval None
+ * @retval HAL status
  */
-__RAM_FUNC HAL_FLASHEx_StopFlashInterfaceClk(void)
+__RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_StopFlashInterfaceClk(void)
 {
     /* Enable Power ctrl clock */
     __HAL_RCC_PWR_CLK_ENABLE();
@@ -125,9 +125,9 @@ __RAM_FUNC HAL_FLASHEx_StopFlashInterfaceClk(void)
  * @note  This mode is only available for STM32F411xx/STM32F446xx devices.
  * @note  This mode couldn't be set while executing with the flash itself.
  *        It should be done with specific routine executed from RAM.
- * @retval None
+ * @retval HAL status
  */
-__RAM_FUNC HAL_FLASHEx_StartFlashInterfaceClk(void)
+__RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_StartFlashInterfaceClk(void)
 {
     /* Enable Power ctrl clock */
     __HAL_RCC_PWR_CLK_ENABLE();
@@ -142,9 +142,9 @@ __RAM_FUNC HAL_FLASHEx_StartFlashInterfaceClk(void)
  * @note  This mode is only available for STM32F41xxx/STM32F446xx devices.
  * @note  This mode could n't be set while executing with the flash itself.
  *        It should be done with specific routine executed from RAM.
- * @retval None
+ * @retval HAL status
  */
-__RAM_FUNC HAL_FLASHEx_EnableFlashSleepMode(void)
+__RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_EnableFlashSleepMode(void)
 {
     /* Enable Power ctrl clock */
     __HAL_RCC_PWR_CLK_ENABLE();
@@ -159,9 +159,9 @@ __RAM_FUNC HAL_FLASHEx_EnableFlashSleepMode(void)
  * @note  This mode is only available for STM32F41xxx/STM32F446xx devices.
  * @note  This mode couldn't be set while executing with the flash itself.
  *        It should be done with specific routine executed from RAM.
- * @retval None
+ * @retval HAL status
  */
-__RAM_FUNC HAL_FLASHEx_DisableFlashSleepMode(void)
+__RAM_FUNC HAL_StatusTypeDef HAL_FLASHEx_DisableFlashSleepMode(void)
 {
     /* Enable Power ctrl clock */
     __HAL_RCC_PWR_CLK_ENABLE();

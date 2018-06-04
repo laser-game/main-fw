@@ -36,7 +36,8 @@
 #include "stm32f4xx_it.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "sound_player.hpp"
+extern SoundPlayer sound_player;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -199,7 +200,7 @@ void SysTick_Handler(void)
 void DMA1_Stream5_IRQHandler(void)
 {
     /* USER CODE BEGIN DMA1_Stream5_IRQn 0 */
-
+    sound_player.set_pin_is_playing(false);
     /* USER CODE END DMA1_Stream5_IRQn 0 */
     HAL_DMA_IRQHandler(&hdma_dac1);
     /* USER CODE BEGIN DMA1_Stream5_IRQn 1 */
@@ -219,6 +220,20 @@ void USART1_IRQHandler(void)
     /* USER CODE BEGIN USART1_IRQn 1 */
 
     /* USER CODE END USART1_IRQn 1 */
+}
+
+/**
+ * @brief This function handles EXTI line[15:10] interrupts.
+ */
+void EXTI15_10_IRQHandler(void)
+{
+    /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+
+    /* USER CODE END EXTI15_10_IRQn 0 */
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
+    /* USER CODE BEGIN EXTI15_10_IRQn 1 */
+
+    /* USER CODE END EXTI15_10_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

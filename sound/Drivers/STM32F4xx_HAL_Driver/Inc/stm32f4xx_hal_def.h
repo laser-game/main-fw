@@ -68,6 +68,9 @@ typedef enum {
 } HAL_LockTypeDef;
 
 /* Exported macro ------------------------------------------------------------*/
+
+#define UNUSED(X) (void) X /* To avoid gcc/g++ warnings */
+
 #define HAL_MAX_DELAY 0xFFFFFFFFU
 
 #define HAL_IS_BIT_SET(REG, BIT) (((REG) &(BIT)) != RESET)
@@ -77,9 +80,7 @@ typedef enum {
     do {                                                      \
         (__HANDLE__)->__PPP_DMA_FIELD__ = &(__DMA_HANDLE__); \
         (__DMA_HANDLE__).Parent         = (__HANDLE__);             \
-    } while (0)
-
-#define UNUSED(x) ((void) (x))
+    } while (0U)
 
 /** @brief Reset the Handle's State field.
  * @param __HANDLE__ specifies the Peripheral Handle.
@@ -149,7 +150,7 @@ typedef enum {
 #   define __ALIGN_BEGIN
 #  endif /* __CC_ARM */
 # endif  /* __ALIGN_BEGIN */
-#endif   /* __GNUC__ */
+#endif /* __GNUC__ */
 
 
 /**
@@ -166,7 +167,7 @@ typedef enum {
  * Available memory areas are declared in the 'Target' tab of the 'Options for Target'
  * dialog.
  */
-# define __RAM_FUNC HAL_StatusTypeDef
+# define __RAM_FUNC
 
 #elif defined( __ICCARM__ )
 
@@ -174,7 +175,7 @@ typedef enum {
  * ---------------
  * RAM functions are defined using a specific toolchain keyword "__ramfunc".
  */
-# define __RAM_FUNC __ramfunc HAL_StatusTypeDef
+# define __RAM_FUNC __ramfunc
 
 #elif defined(  __GNUC__  )
 
@@ -183,7 +184,7 @@ typedef enum {
  * RAM functions are defined using a specific toolchain attribute
  * "__attribute__((section(".RamFunc")))".
  */
-# define __RAM_FUNC HAL_StatusTypeDef  __attribute__((section(".RamFunc")))
+# define __RAM_FUNC __attribute__((section(".RamFunc")))
 
 #endif // if defined( __CC_ARM   )
 

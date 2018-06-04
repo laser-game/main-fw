@@ -21,8 +21,9 @@ void SoundPlayer::init(void)
 
 void SoundPlayer::play(uint32_t *p_data, uint32_t size, uint32_t alignment)
 {
-    off();
+    // off();
     on();
+    set_pin_is_playing(true);
     HAL_DAC_Start_DMA(dac, channel, p_data, size, alignment);
 }
 

@@ -83,11 +83,11 @@
  *
  * ===============================================================================
  ##### Peripheral extended features functions #####
- ##########===============================================================================
+ #####===============================================================================
  #####
  *** Main and Backup Regulators configuration ***
- ******================================================
- ******[..]
+ ***================================================
+ ***[..]
  ***  (+) The backup domain includes 4 Kbytes of backup SRAM accessible only from
  ***      the CPU, and address in 32-bit, 16-bit or 8-bit mode. Its content is
  ***      retained even in Standby or VBAT mode when the low power backup regulator
@@ -115,8 +115,8 @@
  ***    Refer to the product datasheets for more details.
  ***
  *** FLASH Power Down configuration ****
- ******=======================================
- ******[..]
+ ***=======================================
+ ***[..]
  ***  (+) By setting the FPDS bit in the PWR_CR register by using the
  ***      HAL_PWREx_EnableFlashPowerDown() function, the Flash memory also enters power
  ***      down mode when the device enters Stop mode. When the Flash memory
@@ -130,8 +130,8 @@
  ***    Refer to the datasheets for more details.
  ***
  *** Over-Drive and Under-Drive configuration ****
- ******=================================================
- ******[..]
+ ***=================================================
+ ***[..]
  ***   (+) For STM32F42xxx/43xxx/446xx/469xx/479xx Devices, in Run mode: the main regulator has
  ***       2 operating modes available:
  ***    (++) Normal mode: The CPU and core logic operate at maximum frequency at a given
@@ -151,7 +151,7 @@
  ***     (++) Under-drive mode: the 1.2V domain is preserved in reduced leakage mode. This mode is only
  ***          available when the main regulator or the low power regulator is in low voltage mode.
  ***
- ******@endverbatim
+ ***@endverbatim
  * @{
  */
 

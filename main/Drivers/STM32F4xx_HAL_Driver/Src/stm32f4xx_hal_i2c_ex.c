@@ -10,21 +10,21 @@
  * @verbatim
  * ==============================================================================
  ##### I2C peripheral extension features  #####
- ##########==============================================================================
+ #####==============================================================================
  #####
- ##########[..] Comparing to other previous devices, the I2C interface for STM32F427xx/437xx/
+ #####[..] Comparing to other previous devices, the I2C interface for STM32F427xx/437xx/
  ##### 429xx/439xx devices contains the following additional features :
  #####
  ##### (+) Possibility to disable or enable Analog Noise Filter
  ##### (+) Use of a configured Digital Noise Filter
  #####
  ##### How to use this driver #####
- ##########==============================================================================
- ##########[..] This driver provides functions to configure Noise Filter
- ##########(#) Configure I2C Analog noise filter using the function HAL_I2C_AnalogFilter_Config()
- ##########(#) Configure I2C Digital noise filter using the function HAL_I2C_DigitalFilter_Config()
+ #####==============================================================================
+ #####[..] This driver provides functions to configure Noise Filter
+ #####(#) Configure I2C Analog noise filter using the function HAL_I2C_AnalogFilter_Config()
+ #####(#) Configure I2C Digital noise filter using the function HAL_I2C_DigitalFilter_Config()
  #####
- ##########@endverbatim
+ #####@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -90,11 +90,11 @@
  * @verbatim
  * ===============================================================================
  ##### Extension features functions #####
- ##########===============================================================================
- ##########[..] This section provides functions allowing to:
- ##########(+) Configure Noise Filters
+ #####===============================================================================
+ #####[..] This section provides functions allowing to:
+ #####(+) Configure Noise Filters
  #####
- ##########@endverbatim
+ #####@endverbatim
  * @{
  */
 

@@ -67,10 +67,10 @@ extern "C" {
 /** @defgroup DACEx_lfsrunmask_triangleamplitude DAC LFS Run Mask Triangle Amplitude
  * @{
  */
-# define DAC_LFSRUNMASK_BIT0        0x00000000U                                                   /*!< Unmask DAC channel LFSR bit0 for noise wave generation */
-# define DAC_LFSRUNMASK_BITS1_0     ((uint32_t) DAC_CR_MAMP1_0)                                   /*!< Unmask DAC channel LFSR bit[1:0] for noise wave generation */
-# define DAC_LFSRUNMASK_BITS2_0     ((uint32_t) DAC_CR_MAMP1_1)                                   /*!< Unmask DAC channel LFSR bit[2:0] for noise wave generation */
-# define DAC_LFSRUNMASK_BITS3_0     ((uint32_t) DAC_CR_MAMP1_1 | DAC_CR_MAMP1_0)                  /*!< Unmask DAC channel LFSR bit[3:0] for noise wave generation */
+# define DAC_LFSRUNMASK_BIT0        0x00000000U                 /*!< Unmask DAC channel LFSR bit0 for noise wave generation */
+# define DAC_LFSRUNMASK_BITS1_0     ((uint32_t) DAC_CR_MAMP1_0) /*!< Unmask DAC channel LFSR bit[1:0] for noise wave generation */
+# define DAC_LFSRUNMASK_BITS2_0     ((uint32_t) DAC_CR_MAMP1_1) /*!< Unmask DAC channel LFSR bit[2:0] for noise wave generation */
+# define DAC_LFSRUNMASK_BITS3_0     ((uint32_t) DAC_CR_MAMP1_1 | DAC_CR_MAMP1_0)      /*!< Unmask DAC channel LFSR bit[3:0] for noise wave generation */
 # define DAC_LFSRUNMASK_BITS4_0     ((uint32_t) DAC_CR_MAMP1_2)                                   /*!< Unmask DAC channel LFSR bit[4:0] for noise wave generation */
 # define DAC_LFSRUNMASK_BITS5_0     ((uint32_t) DAC_CR_MAMP1_2 | DAC_CR_MAMP1_0)                  /*!< Unmask DAC channel LFSR bit[5:0] for noise wave generation */
 # define DAC_LFSRUNMASK_BITS6_0     ((uint32_t) DAC_CR_MAMP1_2 | DAC_CR_MAMP1_1)                  /*!< Unmask DAC channel LFSR bit[6:0] for noise wave generation */

@@ -49,12 +49,13 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define MUTE_Pin            GPIO_PIN_6
-#define MUTE_GPIO_Port      GPIOA
-#define SOUD_SEL1_Pin       GPIO_PIN_11
-#define SOUD_SEL1_GPIO_Port GPIOA
-#define SOUD_SEL0_Pin       GPIO_PIN_12
-#define SOUD_SEL0_GPIO_Port GPIOA
+#define MUTE_Pin                   GPIO_PIN_6
+#define MUTE_GPIO_Port             GPIOA
+#define SOUND_SLEEP_Pin            GPIO_PIN_11
+#define SOUND_SLEEP_GPIO_Port      GPIOA
+#define SOUND_SLEEP_EXTI_IRQn      EXTI15_10_IRQn
+#define SOUND_IS_PLAYING_Pin       GPIO_PIN_12
+#define SOUND_IS_PLAYING_GPIO_Port GPIOA
 
 /* ########################## Assert Selection ############################## */
 

@@ -118,6 +118,8 @@ int main(void)
     /* USER CODE BEGIN WHILE */
     while (1)
     {
+        // sound_player.set_pin_is_playing(sound_player.is_sound_playing());
+
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
@@ -249,7 +251,7 @@ static void MX_DMA_Init(void)
 
     /* DMA interrupt init */
     /* DMA1_Stream5_IRQn interrupt configuration */
-    HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
 }
 
@@ -268,20 +270,24 @@ static void MX_GPIO_Init(void)
     __HAL_RCC_GPIOA_CLK_ENABLE();
 
     /*Configure GPIO pin Output Level */
-    HAL_GPIO_WritePin(MUTE_GPIO_Port, MUTE_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, MUTE_Pin | SOUND_IS_PLAYING_Pin, GPIO_PIN_RESET);
 
-    /*Configure GPIO pin : MUTE_Pin */
-    GPIO_InitStruct.Pin   = MUTE_Pin;
+    /*Configure GPIO pins : MUTE_Pin SOUND_IS_PLAYING_Pin */
+    GPIO_InitStruct.Pin   = MUTE_Pin | SOUND_IS_PLAYING_Pin;
     GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull  = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(MUTE_GPIO_Port, &GPIO_InitStruct);
-
-    /*Configure GPIO pins : SOUD_SEL1_Pin SOUD_SEL0_Pin */
-    GPIO_InitStruct.Pin  = SOUD_SEL1_Pin | SOUD_SEL0_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    /*Configure GPIO pin : SOUND_SLEEP_Pin */
+    GPIO_InitStruct.Pin  = SOUND_SLEEP_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(SOUND_SLEEP_GPIO_Port, &GPIO_InitStruct);
+
+    /* EXTI interrupt init*/
+    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 3, 0);
+    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 }
 
 /* USER CODE BEGIN 4 */

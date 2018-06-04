@@ -1307,8 +1307,7 @@ typedef struct {
  * @retval The new state of __FLAG__ (TRUE or FALSE).
  */
 #define RCC_FLAG_MASK ((uint8_t) 0x1FU)
-#define __HAL_RCC_GET_FLAG(__FLAG__) \
-    (((((((__FLAG__) >> 5U) == \
+#define __HAL_RCC_GET_FLAG(__FLAG__) (((((((__FLAG__) >> 5U) == \
                       1U) ? RCC->CR : ((((__FLAG__) >> 5U) == 2U) ? RCC->BDCR : ((((__FLAG__) >> 5U) == 3U) ? RCC->CSR : RCC->CIR))) & (1U << ((__FLAG__) &RCC_FLAG_MASK))) != 0U) ? 1U : 0U)
 
 /**

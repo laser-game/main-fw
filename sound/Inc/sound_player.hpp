@@ -2,7 +2,7 @@
 #define __SOUND_PLAYER_INCLUDED__
 
 #include "stm32f4xx_hal.h"
-#include "cm_sound.hpp"
+#include "cm-sound.hpp"
 #include "sound.hpp"
 
 using namespace std;
@@ -45,6 +45,11 @@ public:
     {
         HAL_GPIO_WritePin(MUTE_GPIO_Port, MUTE_Pin, GPIO_PIN_SET);
         HAL_DAC_Stop_DMA(dac, channel);
+    }
+
+    inline void set_pin_is_playing(bool level)
+    {
+        HAL_GPIO_WritePin(SOUND_IS_PLAYING_GPIO_Port, SOUND_IS_PLAYING_Pin, (level) ? GPIO_PIN_SET : GPIO_PIN_RESET);
     }
 
     inline void rx(void)
