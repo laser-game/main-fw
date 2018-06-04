@@ -63,4 +63,5 @@ dkms.conf
 *.htm
 *.bin
 *.mxproject
+*.scratch
 *build/*
