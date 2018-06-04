@@ -150,7 +150,7 @@ typedef enum {
 #   define __ALIGN_BEGIN
 #  endif /* __CC_ARM */
 # endif  /* __ALIGN_BEGIN */
-#endif   /* __GNUC__ */
+#endif /* __GNUC__ */
 
 
 /**

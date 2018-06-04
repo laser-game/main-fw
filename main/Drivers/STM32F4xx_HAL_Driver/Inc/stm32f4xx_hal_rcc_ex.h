@@ -72,8 +72,8 @@ typedef struct {
                     *   This parameter must be a number between Min_Data = 0 and Max_Data = 63    */
 
     uint32_t PLLN; /*!< PLLN: Multiplication factor for PLL VCO output clock.
-                    *    This parameter must be a number between Min_Data = 50 and Max_Data = 432
-                    *    except for STM32F411xE devices where the Min_Data = 192 */
+                   *    This parameter must be a number between Min_Data = 50 and Max_Data = 432
+                   *    except for STM32F411xE devices where the Min_Data = 192 */
 
     uint32_t PLLP; /*!< PLLP: Division factor for main system clock (SYSCLK).
                     *   This parameter must be a value of @ref RCC_PLLP_Clock_Divider             */

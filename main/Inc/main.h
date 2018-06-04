@@ -49,6 +49,24 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define BTN_Pin                    GPIO_PIN_13
+#define BTN_GPIO_Port              GPIOC
+#define A7_Pin                     GPIO_PIN_14
+#define A7_GPIO_Port               GPIOC
+#define A6_Pin                     GPIO_PIN_15
+#define A6_GPIO_Port               GPIOC
+#define A5_Pin                     GPIO_PIN_0
+#define A5_GPIO_Port               GPIOH
+#define A4_Pin                     GPIO_PIN_1
+#define A4_GPIO_Port               GPIOH
+#define A3_Pin                     GPIO_PIN_0
+#define A3_GPIO_Port               GPIOC
+#define A2_Pin                     GPIO_PIN_1
+#define A2_GPIO_Port               GPIOC
+#define A1_Pin                     GPIO_PIN_2
+#define A1_GPIO_Port               GPIOC
+#define A0_Pin                     GPIO_PIN_3
+#define A0_GPIO_Port               GPIOC
 #define SOUND_SLEEP_Pin            GPIO_PIN_8
 #define SOUND_SLEEP_GPIO_Port      GPIOC
 #define SOUND_IS_PLAYING_Pin       GPIO_PIN_9

@@ -12,14 +12,14 @@
  * @verbatim
  * ==============================================================================
  ##### How to use this driver #####
- ##########==============================================================================
- ##########[..]
- ##########The I2C HAL driver can be used as follows:
+ #####==============================================================================
+ #####[..]
+ #####The I2C HAL driver can be used as follows:
  #####
- ##########(#) Declare a I2C_HandleTypeDef handle structure, for example:
+ #####(#) Declare a I2C_HandleTypeDef handle structure, for example:
  #####  I2C_HandleTypeDef  hi2c;
  #####
- ##########(#)Initialize the I2C low level resources by implementing the HAL_I2C_MspInit() API:
+ #####(#)Initialize the I2C low level resources by implementing the HAL_I2C_MspInit() API:
  #####  (##) Enable the I2Cx interface clock
  #####  (##) I2C pins configuration
  #####      (+++) Enable the clock for the I2C GPIOs
@@ -36,34 +36,34 @@
  #####      (+++) Configure the priority and enable the NVIC for the transfer complete interrupt on
  #####            the DMA Tx or Rx Stream
  #####
- ##########(#) Configure the Communication Speed, Duty cycle, Addressing mode, Own Address1,
+ #####(#) Configure the Communication Speed, Duty cycle, Addressing mode, Own Address1,
  #####  Dual Addressing mode, Own Address2, General call and Nostretch mode in the hi2c Init structure.
  #####
- ##########(#) Initialize the I2C registers by calling the HAL_I2C_Init(), configures also the low level Hardware
+ #####(#) Initialize the I2C registers by calling the HAL_I2C_Init(), configures also the low level Hardware
  #####  (GPIO, CLOCK, NVIC...etc) by calling the customized HAL_I2C_MspInit(&hi2c) API.
  #####
- ##########(#) To check if target device is ready for communication, use the function HAL_I2C_IsDeviceReady()
+ #####(#) To check if target device is ready for communication, use the function HAL_I2C_IsDeviceReady()
  #####
- ##########(#) For I2C IO and IO MEM operations, three operation modes are available within this driver :
+ #####(#) For I2C IO and IO MEM operations, three operation modes are available within this driver :
  #####
  *** Polling mode IO operation ***
- ******=================================
- ******[..]
+ ***=================================
+ ***[..]
  ***  (+) Transmit in master mode an amount of data in blocking mode using HAL_I2C_Master_Transmit()
  ***  (+) Receive in master mode an amount of data in blocking mode using HAL_I2C_Master_Receive()
  ***  (+) Transmit in slave mode an amount of data in blocking mode using HAL_I2C_Slave_Transmit()
  ***  (+) Receive in slave mode an amount of data in blocking mode using HAL_I2C_Slave_Receive()
  ***
  *** Polling mode IO MEM operation ***
- ******=====================================
- ******[..]
+ ***=====================================
+ ***[..]
  ***  (+) Write an amount of data in blocking mode to a specific memory address using HAL_I2C_Mem_Write()
  ***  (+) Read an amount of data in blocking mode from a specific memory address using HAL_I2C_Mem_Read()
  ***
  ***
  *** Interrupt mode IO operation ***
- ******===================================
- ******[..]
+ ***===================================
+ ***[..]
  ***  (+) Transmit in master mode an amount of data in non blocking mode using HAL_I2C_Master_Transmit_IT()
  ***  (+) At transmission end of transfer HAL_I2C_MasterTxCpltCallback is executed and user can
  ***       add his own code by customization of function pointer HAL_I2C_MasterTxCpltCallback
@@ -83,11 +83,11 @@
  ***       add his own code by customization of function pointer HAL_I2C_AbortCpltCallback()
  ***
  *** Interrupt mode IO sequential operation ***
- ******==============================================
- ******[..]
+ ***==============================================
+ ***[..]
  ***  (@) These interfaces allow to manage a sequential transfer with a repeated start condition
  ***      when a direction change during transfer
- ******[..]
+ ***[..]
  ***  (+) A specific option field manage the different steps of a sequential transfer
  ***  (+) Option field values are defined through @ref I2C_XFEROPTIONS and are listed below:
  ***  (++) I2C_FIRST_AND_LAST_FRAME: No sequential usage, functionnal is same as associated interfaces in no sequential mode
@@ -128,8 +128,8 @@
  ***       add his own code by customization of function pointer HAL_I2C_AbortCpltCallback()
  ***
  *** Interrupt mode IO MEM operation ***
- ******=======================================
- ******[..]
+ ***=======================================
+ ***[..]
  ***  (+) Write an amount of data in no-blocking mode with Interrupt to a specific memory address using
  ***      HAL_I2C_Mem_Write_IT()
  ***  (+) At MEM end of write transfer HAL_I2C_MemTxCpltCallback is executed and user can
@@ -142,8 +142,8 @@
  ***       add his own code by customization of function pointer HAL_I2C_ErrorCallback
  ***
  *** DMA mode IO operation ***
- ******==============================
- ******[..]
+ ***==============================
+ ***[..]
  ***  (+) Transmit in master mode an amount of data in non blocking mode (DMA) using
  ***      HAL_I2C_Master_Transmit_DMA()
  ***  (+) At transmission end of transfer HAL_I2C_MasterTxCpltCallback is executed and user can
@@ -167,8 +167,8 @@
  ***       add his own code by customization of function pointer HAL_I2C_AbortCpltCallback()
  ***
  *** DMA mode IO MEM operation ***
- ******=================================
- ******[..]
+ ***=================================
+ ***[..]
  ***  (+) Write an amount of data in no-blocking mode with DMA to a specific memory address using
  ***      HAL_I2C_Mem_Write_DMA()
  ***  (+) At MEM end of write transfer HAL_I2C_MemTxCpltCallback is executed and user can
@@ -197,7 +197,7 @@
  ***   (@) You can refer to the I2C HAL driver header file for more useful macros
  ***
  ***
- ******@endverbatim
+ ***@endverbatim
  ******************************************************************************
  * @attention
  *
@@ -323,14 +323,14 @@ static HAL_StatusTypeDef I2C_Slave_AF(I2C_HandleTypeDef *hi2c);
  * @verbatim
  * ===============================================================================
  ##### Initialization and de-initialization functions #####
- ##########===============================================================================
- ##########[..]  This subsection provides a set of functions allowing to initialize and
+ #####===============================================================================
+ #####[..]  This subsection provides a set of functions allowing to initialize and
  #####    de-initialize the I2Cx peripheral:
  #####
- ##########(+) User must Implement HAL_I2C_MspInit() function in which he configures
+ #####(+) User must Implement HAL_I2C_MspInit() function in which he configures
  #####    all related peripherals resources (CLOCK, GPIO, DMA, IT and NVIC).
  #####
- ##########(+) Call the function HAL_I2C_Init() to configure the selected device with
+ #####(+) Call the function HAL_I2C_Init() to configure the selected device with
  #####    the selected configuration:
  #####  (++) Communication Speed
  #####  (++) Duty cycle
@@ -341,10 +341,10 @@ static HAL_StatusTypeDef I2C_Slave_AF(I2C_HandleTypeDef *hi2c);
  #####  (++) General call mode
  #####  (++) Nostretch mode
  #####
- ##########(+) Call the function HAL_I2C_DeInit() to restore the default configuration
+ #####(+) Call the function HAL_I2C_DeInit() to restore the default configuration
  #####    of the selected I2Cx peripheral.
  #####
- ##########@endverbatim
+ #####@endverbatim
  * @{
  */
 
@@ -509,12 +509,12 @@ __weak void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
  * @verbatim
  * ===============================================================================
  ##### IO operation functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection provides a set of functions allowing to manage the I2C data
- ##########transfers.
+ #####===============================================================================
+ #####[..]
+ #####This subsection provides a set of functions allowing to manage the I2C data
+ #####transfers.
  #####
- ##########(#) There are two modes of transfer:
+ #####(#) There are two modes of transfer:
  ##### (++) Blocking mode : The communication is performed in the polling mode.
  #####      The status of all data processing is returned by the same function
  #####      after finishing transfer.
@@ -524,7 +524,7 @@ __weak void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
  #####      dedicated I2C IRQ when using Interrupt mode or the DMA IRQ when
  #####      using DMA mode.
  #####
- ##########(#) Blocking mode functions are :
+ #####(#) Blocking mode functions are :
  #####  (++) HAL_I2C_Master_Transmit()
  #####  (++) HAL_I2C_Master_Receive()
  #####  (++) HAL_I2C_Slave_Transmit()
@@ -533,7 +533,7 @@ __weak void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
  #####  (++) HAL_I2C_Mem_Read()
  #####  (++) HAL_I2C_IsDeviceReady()
  #####
- ##########(#) No-Blocking mode functions with Interrupt are :
+ #####(#) No-Blocking mode functions with Interrupt are :
  #####  (++) HAL_I2C_Master_Transmit_IT()
  #####  (++) HAL_I2C_Master_Receive_IT()
  #####  (++) HAL_I2C_Slave_Transmit_IT()
@@ -545,7 +545,7 @@ __weak void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
  #####  (++) HAL_I2C_Mem_Write_IT()
  #####  (++) HAL_I2C_Mem_Read_IT()
  #####
- ##########(#) No-Blocking mode functions with DMA are :
+ #####(#) No-Blocking mode functions with DMA are :
  #####  (++) HAL_I2C_Master_Transmit_DMA()
  #####  (++) HAL_I2C_Master_Receive_DMA()
  #####  (++) HAL_I2C_Slave_Transmit_DMA()
@@ -553,7 +553,7 @@ __weak void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
  #####  (++) HAL_I2C_Mem_Write_DMA()
  #####  (++) HAL_I2C_Mem_Read_DMA()
  #####
- ##########(#) A set of Transfer Complete Callbacks are provided in non Blocking mode:
+ #####(#) A set of Transfer Complete Callbacks are provided in non Blocking mode:
  #####  (++) HAL_I2C_MemTxCpltCallback()
  #####  (++) HAL_I2C_MemRxCpltCallback()
  #####  (++) HAL_I2C_MasterTxCpltCallback()
@@ -563,7 +563,7 @@ __weak void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
  #####  (++) HAL_I2C_ErrorCallback()
  #####  (++) HAL_I2C_AbortCpltCallback()
  #####
- ##########@endverbatim
+ #####@endverbatim
  * @{
  */
 
@@ -3703,12 +3703,12 @@ __weak void HAL_I2C_AbortCpltCallback(I2C_HandleTypeDef *hi2c)
  * @verbatim
  * ===============================================================================
  ##### Peripheral State, Mode and Error functions #####
- ##########===============================================================================
- ##########[..]
- ##########This subsection permits to get in run-time the status of the peripheral
- ##########and the data flow.
+ #####===============================================================================
+ #####[..]
+ #####This subsection permits to get in run-time the status of the peripheral
+ #####and the data flow.
  #####
- ##########@endverbatim
+ #####@endverbatim
  * @{
  */
 

@@ -394,22 +394,22 @@ static void MX_GPIO_Init(void)
     /*Configure GPIO pin Output Level */
     HAL_GPIO_WritePin(GPIOA, RF_ENABLE_Pin | RF_CONFIG_Pin, GPIO_PIN_RESET);
 
-    /*Configure GPIO pin : PC13 */
-    GPIO_InitStruct.Pin  = GPIO_PIN_13;
+    /*Configure GPIO pin : BTN_Pin */
+    GPIO_InitStruct.Pin  = BTN_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+    HAL_GPIO_Init(BTN_GPIO_Port, &GPIO_InitStruct);
 
-    /*Configure GPIO pins : PC14 PC15 PC0 PC1
-     *                       PC2 PC3 SOUND_IS_PLAYING_Pin */
-    GPIO_InitStruct.Pin = GPIO_PIN_14 | GPIO_PIN_15 | GPIO_PIN_0 | GPIO_PIN_1
-      | GPIO_PIN_2 | GPIO_PIN_3 | SOUND_IS_PLAYING_Pin;
+    /*Configure GPIO pins : A7_Pin A6_Pin A3_Pin A2_Pin
+     *                       A1_Pin A0_Pin SOUND_IS_PLAYING_Pin */
+    GPIO_InitStruct.Pin = A7_Pin | A6_Pin | A3_Pin | A2_Pin
+      | A1_Pin | A0_Pin | SOUND_IS_PLAYING_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-    /*Configure GPIO pins : PH0 PH1 */
-    GPIO_InitStruct.Pin  = GPIO_PIN_0 | GPIO_PIN_1;
+    /*Configure GPIO pins : A5_Pin A4_Pin */
+    GPIO_InitStruct.Pin  = A5_Pin | A4_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);

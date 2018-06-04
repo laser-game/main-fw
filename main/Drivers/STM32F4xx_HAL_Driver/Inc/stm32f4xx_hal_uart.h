@@ -135,9 +135,9 @@ typedef enum {
     HAL_UART_STATE_RESET      = 0x00U, /*!< Peripheral is not yet Initialized
                                         *  Value is allowed for gState and RxState */
     HAL_UART_STATE_READY      = 0x20U, /*!< Peripheral Initialized and ready for use
-                                       *  Value is allowed for gState and RxState */
+                                        *  Value is allowed for gState and RxState */
     HAL_UART_STATE_BUSY       = 0x24U, /*!< an internal process is ongoing
-                                        *   Value is allowed for gState only */
+                                       *   Value is allowed for gState only */
     HAL_UART_STATE_BUSY_TX    = 0x21U, /*!< Data Transmission process is ongoing
                                         *  Value is allowed for gState only */
     HAL_UART_STATE_BUSY_RX    = 0x22U, /*!< Data Reception process is ongoing
