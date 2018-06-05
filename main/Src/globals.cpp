@@ -11,3 +11,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         global->hmtrp->rx_it();
     }
 }
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if (GPIO_Pin == BTN_Pin)
+    {
+        global->color->rgb(255,0,0);
+    }
+}

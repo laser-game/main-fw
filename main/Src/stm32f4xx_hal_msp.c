@@ -162,6 +162,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
         GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+        /* UART4 interrupt Init */
+        HAL_NVIC_SetPriority(UART4_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(UART4_IRQn);
         /* USER CODE BEGIN UART4_MspInit 1 */
 
         /* USER CODE END UART4_MspInit 1 */
@@ -185,6 +188,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
         GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+        /* USART1 interrupt Init */
+        HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(USART1_IRQn);
         /* USER CODE BEGIN USART1_MspInit 1 */
 
         /* USER CODE END USART1_MspInit 1 */
@@ -208,6 +214,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
         GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+        /* USART2 interrupt Init */
+        HAL_NVIC_SetPriority(USART2_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(USART2_IRQn);
         /* USER CODE BEGIN USART2_MspInit 1 */
 
         /* USER CODE END USART2_MspInit 1 */
@@ -231,6 +240,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
         GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
         HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+        /* USART3 interrupt Init */
+        HAL_NVIC_SetPriority(USART3_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(USART3_IRQn);
         /* USER CODE BEGIN USART3_MspInit 1 */
 
         /* USER CODE END USART3_MspInit 1 */
@@ -254,6 +266,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
         GPIO_InitStruct.Alternate = GPIO_AF8_USART6;
         HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+        /* USART6 interrupt Init */
+        HAL_NVIC_SetPriority(USART6_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(USART6_IRQn);
         /* USER CODE BEGIN USART6_MspInit 1 */
 
         /* USER CODE END USART6_MspInit 1 */
@@ -276,6 +291,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
          */
         HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0 | GPIO_PIN_1);
 
+        /* UART4 interrupt DeInit */
+        HAL_NVIC_DisableIRQ(UART4_IRQn);
         /* USER CODE BEGIN UART4_MspDeInit 1 */
 
         /* USER CODE END UART4_MspDeInit 1 */
@@ -294,6 +311,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
          */
         HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9 | GPIO_PIN_10);
 
+        /* USART1 interrupt DeInit */
+        HAL_NVIC_DisableIRQ(USART1_IRQn);
         /* USER CODE BEGIN USART1_MspDeInit 1 */
 
         /* USER CODE END USART1_MspDeInit 1 */
@@ -312,6 +331,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
          */
         HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2 | GPIO_PIN_3);
 
+        /* USART2 interrupt DeInit */
+        HAL_NVIC_DisableIRQ(USART2_IRQn);
         /* USER CODE BEGIN USART2_MspDeInit 1 */
 
         /* USER CODE END USART2_MspDeInit 1 */
@@ -330,6 +351,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
          */
         HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10 | GPIO_PIN_11);
 
+        /* USART3 interrupt DeInit */
+        HAL_NVIC_DisableIRQ(USART3_IRQn);
         /* USER CODE BEGIN USART3_MspDeInit 1 */
 
         /* USER CODE END USART3_MspDeInit 1 */
@@ -348,6 +371,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
          */
         HAL_GPIO_DeInit(GPIOC, GPIO_PIN_6 | GPIO_PIN_7);
 
+        /* USART6 interrupt DeInit */
+        HAL_NVIC_DisableIRQ(USART6_IRQn);
         /* USER CODE BEGIN USART6_MspDeInit 1 */
 
         /* USER CODE END USART6_MspDeInit 1 */

@@ -51,6 +51,7 @@
 
 #define BTN_Pin                    GPIO_PIN_13
 #define BTN_GPIO_Port              GPIOC
+#define BTN_EXTI_IRQn              EXTI15_10_IRQn
 #define A7_Pin                     GPIO_PIN_14
 #define A7_GPIO_Port               GPIOC
 #define A6_Pin                     GPIO_PIN_15
