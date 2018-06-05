@@ -126,6 +126,7 @@ int main(void)
     global->init();
 
     global->debug->tx("START");
+    global->debug->tx("\nADDRESS: " + to_string(global->vest->get_address()));
 
     HAL_Delay(1000);
     global->color->rgb(255, 0, 0);
