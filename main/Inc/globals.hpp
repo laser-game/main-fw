@@ -7,8 +7,8 @@
 #include "cm-crc.hpp"
 #include "cm-packet.hpp"
 #include "cm-uart.hpp"
+#include "cm-hm-trp.hpp"
 
-#include "hm-trp.hpp"
 #include "color.hpp"
 #include "sound-player.hpp"
 #include "vest.hpp"

@@ -44,6 +44,7 @@
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
+I2C_HandleTypeDef hi2c1;
 
 TIM_HandleTypeDef htim3;
 
@@ -118,7 +119,7 @@ int main(void)
     MX_USART6_UART_Init();
     /* USER CODE BEGIN 2 */
     global->debug = new UART(&huart4);
-    global->hmtrp = new HMTRP(&huart1, 9600);
+    global->hmtrp = new HMTRP(&huart1, 57600, 0);
     global->radio_buffer_rx = new CircularBuffer;
     global->color        = new Color(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
     global->sound_player = new SoundPlayer(&huart6);
@@ -137,6 +138,9 @@ int main(void)
 
 
     global->sound_player->play_activated();
+
+    // test I2C
+    
 
     // HAL_Delay(5000);
 
@@ -184,8 +188,8 @@ int main(void)
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        global->hmtrp->tx(global->vest->get_address());
-        global->debug->tx(global->vest->get_address());
+        global->hmtrp->tx("\nADDRESS: " + to_string(global->vest->get_address()));
+        global->debug->tx("\nADDRESS: " + to_string(global->vest->get_address()));
         HAL_Delay(500);
     }
     /* USER CODE END 3 */
@@ -245,7 +249,21 @@ void SystemClock_Config(void)
 
 /* I2C1 init function */
 static void MX_I2C1_Init(void)
-{ }
+{
+    hi2c1.Instance             = I2C1;
+    hi2c1.Init.ClockSpeed      = 100000;
+    hi2c1.Init.DutyCycle       = I2C_DUTYCYCLE_2;
+    hi2c1.Init.OwnAddress1     = 0;
+    hi2c1.Init.AddressingMode  = I2C_ADDRESSINGMODE_7BIT;
+    hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+    hi2c1.Init.OwnAddress2     = 0;
+    hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+    hi2c1.Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;
+    if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+    {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+}
 
 /* TIM3 init function */
 static void MX_TIM3_Init(void)
@@ -383,9 +401,6 @@ static void MX_USART6_UART_Init(void)
  * Output
  * EVENT_OUT
  * EXTI
- *   PB5   ------> I2C1_SMBA
- *   PB6   ------> I2C1_SCL
- *   PB9   ------> I2C1_SDA
  */
 static void MX_GPIO_Init(void)
 {
@@ -449,18 +464,10 @@ static void MX_GPIO_Init(void)
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-    /*Configure GPIO pin : PB4 */
-    GPIO_InitStruct.Pin  = GPIO_PIN_4;
+    /*Configure GPIO pins : I2C_INT_Pin I2C_ALERT_Pin */
+    GPIO_InitStruct.Pin  = I2C_INT_Pin | I2C_ALERT_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-    /*Configure GPIO pins : PB5 PB6 PB9 */
-    GPIO_InitStruct.Pin       = GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_9;
-    GPIO_InitStruct.Mode      = GPIO_MODE_AF_OD;
-    GPIO_InitStruct.Pull      = GPIO_PULLUP;
-    GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
-    GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     /* EXTI interrupt init*/

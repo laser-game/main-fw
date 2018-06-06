@@ -76,6 +76,10 @@
 #define RF_ENABLE_GPIO_Port        GPIOA
 #define RF_CONFIG_Pin              GPIO_PIN_12
 #define RF_CONFIG_GPIO_Port        GPIOA
+#define I2C_INT_Pin                GPIO_PIN_4
+#define I2C_INT_GPIO_Port          GPIOB
+#define I2C_ALERT_Pin              GPIO_PIN_5
+#define I2C_ALERT_GPIO_Port        GPIOB
 
 /* ########################## Assert Selection ############################## */
 
