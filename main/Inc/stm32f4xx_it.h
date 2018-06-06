@@ -56,10 +56,12 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
+void I2C1_EV_IRQHandler(void);
 void USART1_IRQHandler(void);
 void USART2_IRQHandler(void);
 void USART3_IRQHandler(void);
 void EXTI15_10_IRQHandler(void);
+void TIM8_UP_TIM13_IRQHandler(void);
 void UART4_IRQHandler(void);
 void USART6_IRQHandler(void);
 

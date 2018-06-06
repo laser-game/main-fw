@@ -12,6 +12,7 @@
 #include "color.hpp"
 #include "sound-player.hpp"
 #include "vest.hpp"
+#include "battery.hpp"
 
 using namespace std;
 
@@ -32,11 +33,14 @@ public:
     SoundPlayer *sound_player;
     Vest *vest;
     UART *debug;
+    Battery *battery;
 
     inline void init(void)
     {
         CRC32::init();
     }
+
+    void i2c_scan(void);
 };
 
 extern Global *global;

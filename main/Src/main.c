@@ -47,6 +47,7 @@
 I2C_HandleTypeDef hi2c1;
 
 TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim8;
 
 UART_HandleTypeDef huart4;
 UART_HandleTypeDef huart1;
@@ -68,6 +69,7 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USART6_UART_Init(void);
+static void MX_TIM8_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
@@ -117,67 +119,30 @@ int main(void)
     MX_USART2_UART_Init();
     MX_USART3_UART_Init();
     MX_USART6_UART_Init();
+    MX_TIM8_Init();
     /* USER CODE BEGIN 2 */
+    global->init();
     global->debug = new UART(&huart4);
     global->hmtrp = new HMTRP(&huart1, 57600, 0);
     global->radio_buffer_rx = new CircularBuffer;
     global->color        = new Color(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
     global->sound_player = new SoundPlayer(&huart6);
     global->vest         = new Vest;
-    global->init();
+    global->battery      = new Battery(&hi2c1, &htim8);
 
-    global->debug->tx("START");
-    global->debug->tx("\nADDRESS: " + to_string(global->vest->get_address()));
+    HAL_Delay(100);
 
-    HAL_Delay(1000);
-    global->color->rgb(255, 0, 0);
-    HAL_Delay(1000);
-    global->color->rgb(0, 255, 0);
-    HAL_Delay(1000);
-    global->color->rgb(0, 0, 255);
+
+    global->hmtrp->tx("START\n");
+    global->hmtrp->tx("ADDRESS: " + to_string(global->vest->get_address()) + '\n');
+
+    global->i2c_scan();
+
+    global->color->rgb(50, 50, 50);
 
 
     global->sound_player->play_activated();
 
-    // test I2C
-    
-
-    // HAL_Delay(5000);
-
-    /*sound_player.set_sound_set_en();
-     * sound_player.play_number_5();
-     * HAL_Delay(2000);
-     * sound_player.play_number_4();
-     * HAL_Delay(2000);
-     * sound_player.play_number_3();
-     * HAL_Delay(2000);
-     * sound_player.play_number_2();
-     * HAL_Delay(2000);
-     * sound_player.play_number_1();
-     * HAL_Delay(2000);
-     * sound_player.play_play();
-     * HAL_Delay(5000);
-     *
-     * sound_player.set_sound_set_cz();
-     * sound_player.play_number_5();
-     * HAL_Delay(2000);
-     * sound_player.play_number_4();
-     * HAL_Delay(2000);
-     * sound_player.play_number_3();
-     * HAL_Delay(2000);
-     * sound_player.play_number_2();
-     * HAL_Delay(2000);
-     * sound_player.play_number_1();
-     * HAL_Delay(2000);
-     * sound_player.play_play();
-     * HAL_Delay(5000);*/
-
-    /*sound_player.play_keep_going();
-     * while (sound_player.is_sound_playing())
-     * {
-     *  color.rgb(0,255,0);
-     * }
-     * sound_player.play_game_over();*/
 
     /* USER CODE END 2 */
 
@@ -188,9 +153,32 @@ int main(void)
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        global->hmtrp->tx("\nADDRESS: " + to_string(global->vest->get_address()));
-        global->debug->tx("\nADDRESS: " + to_string(global->vest->get_address()));
-        HAL_Delay(500);
+
+        /*if ((stat = HAL_I2C_Mem_Read(&hi2c1, dev_address, reg_address, 2, buffer, 2, 100000)) == HAL_OK)
+         * {
+         *  // global->hmtrp->tx("MSB: " + to_string(buffer[0]) + '\n');
+         *  // global->hmtrp->tx("LSB: " + to_string(buffer[1]) + '\n');
+         *  global->hmtrp->tx("Accumulated Charge: " + to_string((buffer[0] << 1) + buffer[1]) + '\n');
+         * }
+         * else
+         * {
+         *  global->hmtrp->tx("stataus: ");
+         *  switch (stat)
+         *  {
+         *      case 1:
+         *          global->hmtrp->tx("error");
+         *          break;
+         *      case 2:
+         *          global->hmtrp->tx("busy");
+         *          break;
+         *      case 3:
+         *          global->hmtrp->tx("timeout");
+         *          break;
+         *  }
+         *  global->hmtrp->tx('\n');
+         * }*/
+
+        HAL_Delay(1000);
     }
     /* USER CODE END 3 */
 } /* main */
@@ -309,6 +297,37 @@ static void MX_TIM3_Init(void)
 
     HAL_TIM_MspPostInit(&htim3);
 } /* MX_TIM3_Init */
+
+/* TIM8 init function */
+static void MX_TIM8_Init(void)
+{
+    TIM_ClockConfigTypeDef sClockSourceConfig;
+    TIM_MasterConfigTypeDef sMasterConfig;
+
+    htim8.Instance               = TIM8;
+    htim8.Init.Prescaler         = 15999;
+    htim8.Init.CounterMode       = TIM_COUNTERMODE_UP;
+    htim8.Init.Period            = 999;
+    htim8.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+    htim8.Init.RepetitionCounter = 0;
+    if (HAL_TIM_Base_Init(&htim8) != HAL_OK)
+    {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+
+    sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+    if (HAL_TIM_ConfigClockSource(&htim8, &sClockSourceConfig) != HAL_OK)
+    {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+
+    sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+    sMasterConfig.MasterSlaveMode     = TIM_MASTERSLAVEMODE_DISABLE;
+    if (HAL_TIMEx_MasterConfigSynchronization(&htim8, &sMasterConfig) != HAL_OK)
+    {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+}
 
 /* UART4 init function */
 static void MX_UART4_Init(void)
@@ -490,7 +509,12 @@ void _Error_Handler(char *file, int line)
     /* USER CODE BEGIN Error_Handler_Debug */
     /* User can add his own implementation to report the HAL error return state */
     while (1)
-    { }
+    {
+        global->hmtrp->tx("========== error hendler ==========\n");
+        global->hmtrp->tx("file: " + string(file) + '\n');
+        global->hmtrp->tx("line: " + to_string(line) + '\n');
+        global->hmtrp->tx("===================================\n");
+    }
     /* USER CODE END Error_Handler_Debug */
 }
 
