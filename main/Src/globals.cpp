@@ -17,17 +17,18 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     if (GPIO_Pin == BTN_Pin)
     {
-        global->color->rgb(255, 0, 0);
+        global->color_driver->rgb(255, 0, 0);
     }
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-    // if (htim->Instance == global->battery->get_htim()->Instance)
-    if (htim->Instance == TIM8)
+    if (htim->Instance == global->battery->get_htim()->Instance)
     {
         global->hmtrp->tx("START MEASURE CHARGE\n");
-        global->battery->read_charge_it();
+        // global->battery->read_charge_it();
+        global->battery->read_charge();
+        global->hmtrp->tx("Accumulated Charge: " + to_string(global->battery->get_charge_raw()) + '\n');
     }
 }
 

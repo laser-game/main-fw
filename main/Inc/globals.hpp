@@ -29,11 +29,12 @@ public:
 
     HMTRP *hmtrp;
     CircularBuffer *radio_buffer_rx;
-    Color *color;
+    ColorDriver *color_driver;
     SoundPlayer *sound_player;
     Vest *vest;
     UART *debug;
     Battery *battery;
+    Packet *packet;
 
     inline void init(void)
     {
