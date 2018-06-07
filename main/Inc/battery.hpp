@@ -54,8 +54,9 @@ public:
 
     inline bool read_charge(void)
     {
-        if (HAL_I2C_Mem_Read(hi2c, LTC2941_ADDRESS, LTC2941_REG_B, BATTERY_BUFFER_SIZE, buffer, 2, 100) != HAL_OK)
+        if (HAL_I2C_Mem_Read(hi2c, LTC2941_ADDRESS, LTC2941_REG_B, 1, buffer, 2, 10) != HAL_OK)
         {
+            charge_raw = 0;
             return false;
         }
         calculate_charge();
@@ -64,7 +65,7 @@ public:
 
     inline bool read_charge_it(void)
     {
-        return HAL_I2C_Mem_Read_IT(hi2c, LTC2941_ADDRESS, LTC2941_REG_B, BATTERY_BUFFER_SIZE, buffer, 2);
+        return HAL_I2C_Mem_Read_IT(hi2c, LTC2941_ADDRESS, LTC2941_REG_B, 1, buffer, 2);
     }
 
     inline void calculate_charge(void)

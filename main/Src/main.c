@@ -125,24 +125,22 @@ int main(void)
     global->debug = new UART(&huart4);
     global->hmtrp = new HMTRP(&huart1, 57600, 0);
     global->radio_buffer_rx = new CircularBuffer;
-    global->color        = new Color(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
+    global->color_driver = new ColorDriver(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
     global->sound_player = new SoundPlayer(&huart6);
     global->vest         = new Vest;
     global->battery      = new Battery(&hi2c1, &htim8);
-
+    
     HAL_Delay(100);
-
 
     global->hmtrp->tx("START\n");
     global->hmtrp->tx("ADDRESS: " + to_string(global->vest->get_address()) + '\n');
 
     global->i2c_scan();
-
-    global->color->rgb(50, 50, 50);
-
-
+    //global->battery->start_tim();
+    global->color_driver->rgb(50, 50, 50);
     global->sound_player->play_activated();
 
+    uint32_t i = 0;
 
     /* USER CODE END 2 */
 
@@ -153,31 +151,7 @@ int main(void)
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-
-        /*if ((stat = HAL_I2C_Mem_Read(&hi2c1, dev_address, reg_address, 2, buffer, 2, 100000)) == HAL_OK)
-         * {
-         *  // global->hmtrp->tx("MSB: " + to_string(buffer[0]) + '\n');
-         *  // global->hmtrp->tx("LSB: " + to_string(buffer[1]) + '\n');
-         *  global->hmtrp->tx("Accumulated Charge: " + to_string((buffer[0] << 1) + buffer[1]) + '\n');
-         * }
-         * else
-         * {
-         *  global->hmtrp->tx("stataus: ");
-         *  switch (stat)
-         *  {
-         *      case 1:
-         *          global->hmtrp->tx("error");
-         *          break;
-         *      case 2:
-         *          global->hmtrp->tx("busy");
-         *          break;
-         *      case 3:
-         *          global->hmtrp->tx("timeout");
-         *          break;
-         *  }
-         *  global->hmtrp->tx('\n');
-         * }*/
-
+        global->hmtrp->tx(to_string(i++) + "\n");
         HAL_Delay(1000);
     }
     /* USER CODE END 3 */
@@ -307,7 +281,7 @@ static void MX_TIM8_Init(void)
     htim8.Instance               = TIM8;
     htim8.Init.Prescaler         = 15999;
     htim8.Init.CounterMode       = TIM_COUNTERMODE_UP;
-    htim8.Init.Period            = 999;
+    htim8.Init.Period            = 2999;
     htim8.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
     htim8.Init.RepetitionCounter = 0;
     if (HAL_TIM_Base_Init(&htim8) != HAL_OK)
