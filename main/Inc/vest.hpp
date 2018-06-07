@@ -13,8 +13,6 @@ using namespace std;
 
 class Vest : public BasicVest
 {
-private:
-
 public:
     Vest(void);
     void read_address(void);
