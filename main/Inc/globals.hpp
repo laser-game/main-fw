@@ -13,6 +13,7 @@
 #include "sound-player.hpp"
 #include "vest.hpp"
 #include "battery.hpp"
+#include "command-queue.hpp"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ public:
         return &object;
     }
 
+    CommandQueue *cmd_queue;
     HMTRP *hmtrp;
     CircularBuffer *radio_buffer_rx;
     ColorDriver *color_driver;
