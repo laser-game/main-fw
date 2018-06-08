@@ -125,22 +125,43 @@ int main(void)
     global->debug = new UART(&huart4);
     global->hmtrp = new HMTRP(&huart1, 57600, 0);
     global->radio_buffer_rx = new CircularBuffer;
-    global->color_driver = new ColorDriver(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
-    global->sound_player = new SoundPlayer(&huart6);
-    global->vest         = new Vest;
-    global->battery      = new Battery(&hi2c1, &htim8);
-    
+    global->color_driver    = new ColorDriver(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
+    global->sound_player    = new SoundPlayer(&huart6);
+    global->vest      = new Vest;
+    global->battery   = new Battery(&hi2c1, &htim8);
+    global->packet    = new Packet(global->vest->get_address());
+    global->cmd_queue = new CommandQueue;
+
     HAL_Delay(100);
 
-    global->hmtrp->tx("START\n");
-    global->hmtrp->tx("ADDRESS: " + to_string(global->vest->get_address()) + '\n');
+    global->debug->tx("START\n");
+    global->debug->tx("ADDRESS: " + to_string(global->vest->get_address()) + '\n');
 
     global->i2c_scan();
-    //global->battery->start_tim();
+    // global->battery->start_tim();
     global->color_driver->rgb(50, 50, 50);
     global->sound_player->play_activated();
 
-    uint32_t i = 0;
+
+    global->debug->tx("============== TEST ===============\n");
+    for (uint32_t cnt = 0; cnt < 200; cnt++)
+    {
+        global->packet->create(global->radio_buffer_rx, vector_uint8_t_array(0, 0, 255));
+        if (global->packet->find(global->radio_buffer_rx))
+        {
+            global->debug->tx("size :" + to_string(global->packet->get_size()) + "\n");
+            global->debug->tx("start :" + to_string(global->packet->get_index_start()) + "\n");
+            uint8_t r, g, b, i = global->packet->get_index_start();
+            r = global->radio_buffer_rx->read(i);
+            g = global->radio_buffer_rx->read(i + 1);
+            b = global->radio_buffer_rx->read(i + 2);
+            global->color_driver->rgb(r, g, b);
+            global->debug->tx("rgb: " + to_string(r) + ", " + to_string(g) + ", " + to_string(b) + "\n");
+            global->debug->tx("cnt :" + to_string(++cnt) + "\n");
+            global->debug->tx("-----------------------------------------\n");
+        }
+    }
+
 
     /* USER CODE END 2 */
 
@@ -151,8 +172,6 @@ int main(void)
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        global->hmtrp->tx(to_string(i++) + "\n");
-        HAL_Delay(1000);
     }
     /* USER CODE END 3 */
 } /* main */
@@ -484,10 +503,10 @@ void _Error_Handler(char *file, int line)
     /* User can add his own implementation to report the HAL error return state */
     while (1)
     {
-        global->hmtrp->tx("========== error hendler ==========\n");
-        global->hmtrp->tx("file: " + string(file) + '\n');
-        global->hmtrp->tx("line: " + to_string(line) + '\n');
-        global->hmtrp->tx("===================================\n");
+        global->debug->tx("========== error hendler ==========\n");
+        global->debug->tx("file: " + string(file) + '\n');
+        global->debug->tx("line: " + to_string(line) + '\n');
+        global->debug->tx("===================================\n");
     }
     /* USER CODE END Error_Handler_Debug */
 }
