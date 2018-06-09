@@ -47,6 +47,7 @@
 I2C_HandleTypeDef hi2c1;
 
 TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim7;
 TIM_HandleTypeDef htim8;
 
 UART_HandleTypeDef huart4;
@@ -70,6 +71,7 @@ static void MX_USART2_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USART6_UART_Init(void);
 static void MX_TIM8_Init(void);
+static void MX_TIM7_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
@@ -120,6 +122,7 @@ int main(void)
     MX_USART3_UART_Init();
     MX_USART6_UART_Init();
     MX_TIM8_Init();
+    MX_TIM7_Init();
     /* USER CODE BEGIN 2 */
     global->init();
     global->debug = new UART(&huart4);
@@ -139,28 +142,38 @@ int main(void)
 
     global->i2c_scan();
     // global->battery->start_tim();
-    global->color_driver->rgb(50, 50, 50);
+    global->color_driver->rgb(0, 50, 0);
     global->sound_player->play_activated();
 
+    ir_rx_init();
 
-    global->debug->tx("============== TEST ===============\n");
-    for (uint32_t cnt = 0; cnt < 200; cnt++)
-    {
-        global->packet->create(global->radio_buffer_rx, vector_uint8_t_array(0, 0, 255));
-        if (global->packet->find(global->radio_buffer_rx))
-        {
-            global->debug->tx("size :" + to_string(global->packet->get_size()) + "\n");
-            global->debug->tx("start :" + to_string(global->packet->get_index_start()) + "\n");
-            uint8_t r, g, b, i = global->packet->get_index_start();
-            r = global->radio_buffer_rx->read(i);
-            g = global->radio_buffer_rx->read(i + 1);
-            b = global->radio_buffer_rx->read(i + 2);
-            global->color_driver->rgb(r, g, b);
-            global->debug->tx("rgb: " + to_string(r) + ", " + to_string(g) + ", " + to_string(b) + "\n");
-            global->debug->tx("cnt :" + to_string(++cnt) + "\n");
-            global->debug->tx("-----------------------------------------\n");
-        }
-    }
+
+    /*global->debug->tx("============== TEST ===============\n");
+     * for (uint32_t cnt = 0; cnt < 200; cnt++)
+     * {
+     *  global->packet->create(global->radio_buffer_rx, vector_uint8_t_array(0, 0, 255));
+     *  if (global->packet->find(global->radio_buffer_rx))
+     *  {
+     *      //global->debug->tx("size :" + to_string(global->packet->get_size()) + "\n");
+     *      //global->debug->tx("start :" + to_string(global->packet->get_index_start()) + "\n");
+     *      uint8_t r, g, b;
+     *      r = global->packet->data[0];
+     *      g = global->packet->data[1];
+     *      b = global->packet->data[2];
+     *      global->color_driver->rgb(r, g, b);
+     *      global->debug->tx("rgb: " + to_string(r) + ", " + to_string(g) + ", " + to_string(b) + "\n");
+     *      global->debug->tx("cnt :" + to_string(++cnt) + "\n");
+     *      global->debug->tx("-----------------------------------------\n");
+     *  }
+     * }*/
+
+
+    /*global->packet->data.clear();
+     * global->packet->data.push_back(1);
+     * global->packet->data.push_back(2);
+     * global->packet->data.push_back(3);
+     * global->packet->create();
+     * global->hmtrp->tx(global->packet->stream);*/
 
 
     /* USER CODE END 2 */
@@ -290,6 +303,28 @@ static void MX_TIM3_Init(void)
 
     HAL_TIM_MspPostInit(&htim3);
 } /* MX_TIM3_Init */
+
+/* TIM7 init function */
+static void MX_TIM7_Init(void)
+{
+    TIM_MasterConfigTypeDef sMasterConfig;
+
+    htim7.Instance         = TIM7;
+    htim7.Init.Prescaler   = 15;
+    htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim7.Init.Period      = 0xFFFF;
+    if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
+    {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+
+    sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+    sMasterConfig.MasterSlaveMode     = TIM_MASTERSLAVEMODE_DISABLE;
+    if (HAL_TIMEx_MasterConfigSynchronization(&htim7, &sMasterConfig) != HAL_OK)
+    {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+}
 
 /* TIM8 init function */
 static void MX_TIM8_Init(void)
@@ -463,11 +498,11 @@ static void MX_GPIO_Init(void)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(SOUND_IS_PLAYING_GPIO_Port, &GPIO_InitStruct);
 
-    /*Configure GPIO pin : PA8 */
-    GPIO_InitStruct.Pin  = GPIO_PIN_8;
-    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    /*Configure GPIO pin : IR_RX_Pin */
+    GPIO_InitStruct.Pin  = IR_RX_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(IR_RX_GPIO_Port, &GPIO_InitStruct);
 
     /*Configure GPIO pins : RF_ENABLE_Pin RF_CONFIG_Pin */
     GPIO_InitStruct.Pin   = RF_ENABLE_Pin | RF_CONFIG_Pin;
@@ -483,6 +518,9 @@ static void MX_GPIO_Init(void)
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     /* EXTI interrupt init*/
+    HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
     HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 } /* MX_GPIO_Init */

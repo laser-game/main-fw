@@ -4,27 +4,20 @@ Global *global = Global::instance();
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    static uint32_t cnt=0;
     if (huart->Instance == global->hmtrp->get_huart()->Instance)
     {
         global->radio_buffer_rx->insert(global->hmtrp->buffer_rx[0]);
+        global->hmtrp->rx_it();
         if (global->packet->find(global->radio_buffer_rx))
         {
-            //global->debug->tx("OK PACKET :D\n");
-            //global->debug->tx("size :" + to_string(global->packet->get_size()) + "\n");
-            uint8_t r, g, b, i = global->packet->get_index_start();
-            r = global->radio_buffer_rx->read(i);
-            g = global->radio_buffer_rx->read(i + 1);
-            b = global->radio_buffer_rx->read(i + 2);
+            uint8_t r = global->packet->data[0];
+            uint8_t g = global->packet->data[1];
+            uint8_t b = global->packet->data[2];
+
             global->color_driver->rgb(r, g, b);
-            //global->debug->tx("rgb: " + to_string(r) + ", " + to_string(g) + ", " + to_string(b) + "\n");
-            //global->debug->tx("cnt :" + to_string(++cnt) + "\n");
+            global->packet->create();
+            global->hmtrp->tx(global->packet->stream);
         }
-        else
-        {
-            //global->debug->tx("PACKET neni celi\n");
-        }
-        global->hmtrp->rx_it();
     }
     else if (huart->Instance == global->debug->get_huart()->Instance)
     { }
@@ -32,9 +25,19 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-    if (GPIO_Pin == BTN_Pin)
+    if (GPIO_Pin == IR_RX_Pin)
     {
-        global->color_driver->rgb(255, 0, 0);
+        ir_ext_it();
+    }
+    else if (GPIO_Pin == BTN_Pin)
+    {
+        global->color_driver->rgb(55, 0, 0);
+        uint8_t hub[512];
+        uint16_t i;
+        for (i = 0; i < 512; i++)
+            hub[i] = (i > 256) ? i % 256 : i;
+        HAL_UART_Transmit(global->hmtrp->get_huart(), hub, 512, 100);
+        global->color_driver->rgb(0, 55, 0);
     }
 }
 

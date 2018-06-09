@@ -72,6 +72,9 @@
 #define SOUND_SLEEP_GPIO_Port      GPIOC
 #define SOUND_IS_PLAYING_Pin       GPIO_PIN_9
 #define SOUND_IS_PLAYING_GPIO_Port GPIOC
+#define IR_RX_Pin                  GPIO_PIN_8
+#define IR_RX_GPIO_Port            GPIOA
+#define IR_RX_EXTI_IRQn            EXTI9_5_IRQn
 #define RF_ENABLE_Pin              GPIO_PIN_11
 #define RF_ENABLE_GPIO_Port        GPIOA
 #define RF_CONFIG_Pin              GPIO_PIN_12
@@ -80,6 +83,7 @@
 #define I2C_INT_GPIO_Port          GPIOB
 #define I2C_ALERT_Pin              GPIO_PIN_5
 #define I2C_ALERT_GPIO_Port        GPIOB
+#define I2C_ALERT_EXTI_IRQn        EXTI9_5_IRQn
 
 /* ########################## Assert Selection ############################## */
 

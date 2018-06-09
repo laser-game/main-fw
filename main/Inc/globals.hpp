@@ -14,7 +14,9 @@
 #include "vest.hpp"
 #include "battery.hpp"
 #include "command-queue.hpp"
+#include "ir-rx.hpp"
 
+#include <vector>
 using namespace std;
 
 class Global
