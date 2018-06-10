@@ -379,7 +379,7 @@ static void MX_UART4_Init(void)
 static void MX_USART1_UART_Init(void)
 {
     huart1.Instance          = USART1;
-    huart1.Init.BaudRate     = 115200;
+    huart1.Init.BaudRate     = 57600;
     huart1.Init.WordLength   = UART_WORDLENGTH_8B;
     huart1.Init.StopBits     = UART_STOPBITS_1;
     huart1.Init.Parity       = UART_PARITY_NONE;
@@ -464,7 +464,7 @@ static void MX_GPIO_Init(void)
     HAL_GPIO_WritePin(GPIOC, SOUND_SLEEP_Pin | GPIO_PIN_12, GPIO_PIN_RESET);
 
     /*Configure GPIO pin Output Level */
-    HAL_GPIO_WritePin(GPIOA, RF_ENABLE_Pin | RF_CONFIG_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, RF_ENABLE_Pin | RF_CONFIG_Pin, GPIO_PIN_SET);
 
     /*Configure GPIO pin : BTN_Pin */
     GPIO_InitStruct.Pin  = BTN_Pin;

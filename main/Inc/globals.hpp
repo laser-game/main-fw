@@ -47,6 +47,7 @@ public:
     {
         CRC32::init();
         CRC16::init();
+        HAL_Delay(500);
     }
 
     void i2c_scan(void);
