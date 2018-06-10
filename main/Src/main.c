@@ -41,6 +41,7 @@
 
 /* USER CODE BEGIN Includes */
 #include "globals.hpp"
+#include "gun.hpp"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -127,6 +128,7 @@ int main(void)
     global->init();
     global->debug = new UART(&huart4);
     global->hmtrp = new HMTRP(&huart1, 57600, 0);
+    global->gun   = new Gun(&huart2);
     global->radio_buffer_rx = new CircularBuffer;
     global->color_driver    = new ColorDriver(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
     global->sound_player    = new SoundPlayer(&huart6);

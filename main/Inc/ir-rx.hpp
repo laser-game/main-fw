@@ -1,18 +1,8 @@
-/*
- * Knihovna pro infračervenou kominukaci
- *
- * autor: wykys
- * verze: 1.0
- * datum: 4.8.2016
- */
-
 #ifndef IR_H_INCLUDED
 #define IR_H_INCLUDED
 
 #include "stm32f4xx_hal.h"
-// #include "rf_hw.h"
-// #include "rf_protocol.h"
-// #include "color.h"
+
 
 typedef enum {
     IR_TIM_START_PULS   = 5000,

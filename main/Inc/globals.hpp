@@ -15,6 +15,7 @@
 #include "battery.hpp"
 #include "command-queue.hpp"
 #include "ir-rx.hpp"
+#include "gun.hpp"
 
 #include <vector>
 using namespace std;
@@ -32,6 +33,7 @@ public:
 
     CommandQueue *cmd_queue;
     HMTRP *hmtrp;
+    Gun *gun;
     CircularBuffer *radio_buffer_rx;
     ColorDriver *color_driver;
     SoundPlayer *sound_player;

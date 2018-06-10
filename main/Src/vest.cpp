@@ -1,8 +1,10 @@
 #include "vest.hpp"
+#include "globals.hpp"
 
 Vest::Vest(void)
 {
     read_address();
+    global->gun->set_address(get_address());
 }
 
 void Vest::read_address(void)

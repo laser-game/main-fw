@@ -144,6 +144,7 @@ void ir_ext_it(void)
                      *  RF_PacketSend(&RF_TxPacket);
                      * }*/
                     global->sound_player->play_dont_give_up();
+                    global->debug->tx("Kill me player " + to_string (ir_data.data >> 16) + '\n');
                 }
             }
             ir_dec_state = IR_DEC_STATE_START_PULS;

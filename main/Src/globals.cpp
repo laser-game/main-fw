@@ -19,8 +19,18 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
             global->hmtrp->tx(global->packet->stream);
         }
     }
+    else if (huart->Instance == global->gun->get_huart()->Instance)
+    {
+        if (global->gun->buffer_rx[0] == GUN_CMD_BANG)
+        {
+            global->sound_player->play_gun();
+        }
+        global->gun->rx_it();
+    }
     else if (huart->Instance == global->debug->get_huart()->Instance)
-    { }
+    {
+        global->debug->rx_it();
+    }
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
