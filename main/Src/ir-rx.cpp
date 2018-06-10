@@ -84,6 +84,7 @@ void IR::ext_it(void)
                 if (this->crc == CRC16::calculate(this->address))
                 {
                     global->sound_player->play_dont_give_up();
+                    global->debug->tx("Kill me player " + to_string(this->address) + '\n');
                 }
             }
             this->decoder_state = IR_DEC_STATE_START_PULS;
