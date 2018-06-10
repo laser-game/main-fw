@@ -1,8 +1,9 @@
-#ifndef IR_H_INCLUDED
-#define IR_H_INCLUDED
+#ifndef __IR_INCLUDED__
+#define __IR_INCLUDED__
 
 #include "stm32f4xx_hal.h"
 
+#include "cm-timer.hpp"
 
 typedef enum {
     IR_TIM_START_PULS   = 5000,
@@ -23,18 +24,18 @@ typedef enum {
     IR_DEC_STATE_END_PULS
 } ir_dec_state_t;
 
-typedef struct {
-    uint8_t  address;
+
+class IR : public Timer
+{
+private:
     uint16_t crc;
     uint32_t data;
-} ir_data_t;
+    uint8_t  address;
+    ir_dec_state_t decoder_state;
+public:
+    IR(TIM_HandleTypeDef *htim);
+    uint32_t crc16b(void);
+    void ext_it(void);
+};
 
-
-extern ir_data_t ir_data;
-extern ir_dec_state_t ir_dec_state;
-
-void ir_rx_init(void);
-uint32_t ir_crc16b(void);
-void ir_ext_it(void);
-
-#endif // IR_H_INCLUDED
+#endif // __IR_INCLUDED__

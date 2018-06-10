@@ -34,6 +34,7 @@ public:
     CommandQueue *cmd_queue;
     HMTRP *hmtrp;
     Gun *gun;
+    IR *ir;
     CircularBuffer *radio_buffer_rx;
     ColorDriver *color_driver;
     SoundPlayer *sound_player;

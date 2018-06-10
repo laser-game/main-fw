@@ -136,6 +136,7 @@ int main(void)
     global->battery   = new Battery(&hi2c1, &htim8);
     global->packet    = new Packet(global->vest->get_address());
     global->cmd_queue = new CommandQueue;
+    global->ir        = new IR(&htim7);
 
     HAL_Delay(100);
 
@@ -146,8 +147,6 @@ int main(void)
     // global->battery->start_tim();
     global->color_driver->rgb(0, 50, 0);
     global->sound_player->play_activated();
-
-    ir_rx_init();
 
 
     /*global->debug->tx("============== TEST ===============\n");

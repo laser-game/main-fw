@@ -37,7 +37,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     if (GPIO_Pin == IR_RX_Pin)
     {
-        ir_ext_it();
+        global->ir->ext_it();
     }
     else if (GPIO_Pin == BTN_Pin)
     {
