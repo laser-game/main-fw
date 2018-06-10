@@ -30,7 +30,7 @@ class IR : public Timer
 private:
     uint16_t crc;
     uint32_t data;
-    uint8_t  address;
+    uint8_t address;
     ir_dec_state_t decoder_state;
 public:
     IR(TIM_HandleTypeDef *htim);
