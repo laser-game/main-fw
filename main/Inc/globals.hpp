@@ -46,6 +46,7 @@ public:
     inline void init(void)
     {
         CRC32::init();
+        CRC16::init();
     }
 
     void i2c_scan(void);

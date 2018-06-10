@@ -21,34 +21,6 @@ IR::IR(TIM_HandleTypeDef *htim) : Timer(htim)
     start_tim();
 }
 
-uint32_t IR::crc16b(void)
-{
-    uint16_t gp   = 0x4599;
-    uint32_t mask = 0x00FF0000;
-    uint32_t data;
-    uint32_t gp_shift;
-    uint8_t i, i_max;
-
-    data = this->data;
-
-    for (i_max = 0, gp_shift = gp; !(gp_shift & 0x80000000); i_max++)
-    {
-        gp_shift = gp << i_max;
-    }
-    i_max--;
-
-    for (i = 0; data &mask; i++)
-    {
-        if ((data << i) & 0x80000000)
-        {
-            gp_shift = gp << (i_max - i);
-            data    ^= gp_shift;
-        }
-    }
-
-    return data;
-}
-
 void IR::ext_it(void)
 {
     static uint8_t index = 0;
@@ -107,10 +79,10 @@ void IR::ext_it(void)
         case IR_DEC_STATE_END_PULS:
             if (check_pulse_hight(IR_TIM_END_PULS))
             {
-                if (not crc16b())
+                this->address = uint8_t(this->data >> 16);
+                this->crc     = uint16_t(this->data & 0xFFFF);
+                if (this->crc == CRC16::calculate(this->address))
                 {
-                    this->address = uint8_t(this->data >> 16);
-                    this->crc     = uint16_t(this->data & 0xFFFF);
                     global->sound_player->play_dont_give_up();
                 }
             }

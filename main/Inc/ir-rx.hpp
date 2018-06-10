@@ -4,6 +4,7 @@
 #include "stm32f4xx_hal.h"
 
 #include "cm-timer.hpp"
+#include "cm-crc.hpp"
 
 typedef enum {
     IR_TIM_START_PULS   = 5000,
@@ -34,7 +35,6 @@ private:
     ir_dec_state_t decoder_state;
 public:
     IR(TIM_HandleTypeDef *htim);
-    uint32_t crc16b(void);
     void ext_it(void);
 };
 
