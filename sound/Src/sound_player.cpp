@@ -1,27 +1,31 @@
 #include "sound_player.hpp"
 
-SoundPlayer::SoundPlayer(DAC_HandleTypeDef *dac, DMA_HandleTypeDef *dma_dac, TIM_HandleTypeDef *tim, UART_HandleTypeDef *uart, uint8_t channel)
+SoundPlayer *sound_player;
+
+SoundPlayer::SoundPlayer(
+  UART_HandleTypeDef *huart,
+  DAC_HandleTypeDef * dac,
+  DMA_HandleTypeDef * dma_dac,
+  TIM_HandleTypeDef * tim,
+  uint8_t             channel
+) : UART(huart)
 {
     this->dac       = dac;
     this->dma_dac   = dma_dac;
     this->tim       = tim;
-    this->uart      = uart;
     this->channel   = channel;
     this->sound_set = SOUND_SET_EN;
-}
 
-void SoundPlayer::init(void)
-{
     off();
     HAL_TIM_Base_Start(tim);
     HAL_DAC_Start(dac, channel);
     HAL_DAC_SetValue(dac, channel, DAC_ALIGN_12B_R, 0);
-    rx();
+    rx_it();
 }
 
 void SoundPlayer::play(uint32_t *p_data, uint32_t size, uint32_t alignment)
 {
-    // off();
+    off();
     on();
     set_pin_is_playing(true);
     HAL_DAC_Start_DMA(dac, channel, p_data, size, alignment);
@@ -127,7 +131,6 @@ void SoundPlayer::cmd(uint8_t cmd)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    extern SoundPlayer sound_player;
-    sound_player.cmd(sound_player.get_uart_rx_buffer());
-    sound_player.rx();
+    sound_player->cmd(sound_player->buffer_rx[0]);
+    sound_player->rx_it();
 }

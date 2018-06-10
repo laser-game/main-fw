@@ -54,7 +54,7 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-SoundPlayer sound_player(&hdac, &hdma_dac1, &htim6, &huart1, DAC_CHANNEL_1);
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,8 +109,7 @@ int main(void)
     MX_TIM6_Init();
     /* USER CODE BEGIN 2 */
 
-    sound_player.init();
-
+    sound_player = new SoundPlayer(&huart1, &hdac, &hdma_dac1, &htim6, DAC_CHANNEL_1);
 
     /* USER CODE END 2 */
 

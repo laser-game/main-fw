@@ -37,7 +37,6 @@
 
 /* USER CODE BEGIN 0 */
 #include "sound_player.hpp"
-extern SoundPlayer sound_player;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -200,7 +199,7 @@ void SysTick_Handler(void)
 void DMA1_Stream5_IRQHandler(void)
 {
     /* USER CODE BEGIN DMA1_Stream5_IRQn 0 */
-    sound_player.set_pin_is_playing(false);
+    sound_player->set_pin_is_playing(false);
     /* USER CODE END DMA1_Stream5_IRQn 0 */
     HAL_DMA_IRQHandler(&hdma_dac1);
     /* USER CODE BEGIN DMA1_Stream5_IRQn 1 */
