@@ -33,6 +33,8 @@ void ColorDriver::disable(void)
 
 void ColorDriver::rgb(uint8_t r, uint8_t g, uint8_t b)
 {
+    color.set_rgb(r, g, b);
+
     *((uint32_t *) ((uint8_t *) &htim->Instance->CCR1 + tim_channel_r)) = r;
     *((uint32_t *) ((uint8_t *) &htim->Instance->CCR1 + tim_channel_g)) = g;
     *((uint32_t *) ((uint8_t *) &htim->Instance->CCR1 + tim_channel_b)) = b;

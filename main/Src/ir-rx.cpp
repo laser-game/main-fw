@@ -83,8 +83,11 @@ void IR::ext_it(void)
                 this->crc     = uint16_t(this->data & 0xFFFF);
                 if (this->crc == CRC16::calculate(this->address))
                 {
-                    global->sound_player->play_dont_give_up();
-                    global->debug->tx("Kill me player " + to_string(this->address) + '\n');
+                    if (global->player->is_alive())
+                    {
+                        global->player->death();
+                        global->debug->tx("Kill me player " + to_string(this->address) + '\n');
+                    }
                 }
             }
             this->decoder_state = IR_DEC_STATE_START_PULS;

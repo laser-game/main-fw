@@ -50,6 +50,7 @@ I2C_HandleTypeDef hi2c1;
 TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim7;
 TIM_HandleTypeDef htim8;
+TIM_HandleTypeDef htim9;
 
 UART_HandleTypeDef huart4;
 UART_HandleTypeDef huart1;
@@ -73,6 +74,7 @@ static void MX_USART3_UART_Init(void);
 static void MX_USART6_UART_Init(void);
 static void MX_TIM8_Init(void);
 static void MX_TIM7_Init(void);
+static void MX_TIM9_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
@@ -124,6 +126,7 @@ int main(void)
     MX_USART6_UART_Init();
     MX_TIM8_Init();
     MX_TIM7_Init();
+    MX_TIM9_Init();
     /* USER CODE BEGIN 2 */
     global->init();
     global->debug = new UART(&huart4);
@@ -132,11 +135,13 @@ int main(void)
     global->radio_buffer_rx = new CircularBuffer;
     global->color_driver    = new ColorDriver(&htim3, TIM_CHANNEL_3, TIM_CHANNEL_2, TIM_CHANNEL_1);
     global->sound_player    = new SoundPlayer(&huart6);
-    global->vest      = new Vest;
-    global->battery   = new Battery(&hi2c1, &htim8);
-    global->packet    = new Packet(global->vest->get_address());
-    global->cmd_queue = new CommandQueue;
-    global->ir        = new IR(&htim7);
+    global->vest         = new Vest;
+    global->player = new Player;
+    global->battery      = new Battery(&hi2c1, &htim8);
+    global->packet       = new Packet(global->vest->get_address());
+    global->cmd_queue    = new CommandQueue;
+    global->ir           = new IR(&htim7);
+    global->timer_spirit = new Timer(&htim9);
 
     HAL_Delay(100);
 
@@ -147,6 +152,8 @@ int main(void)
     // global->battery->start_tim();
     global->color_driver->rgb(0, 50, 0);
     global->sound_player->play_activated();
+
+    global->sound_player->set_sound_set_cz();
 
 
     /*global->debug->tx("============== TEST ===============\n");
@@ -353,6 +360,28 @@ static void MX_TIM8_Init(void)
     sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
     sMasterConfig.MasterSlaveMode     = TIM_MASTERSLAVEMODE_DISABLE;
     if (HAL_TIMEx_MasterConfigSynchronization(&htim8, &sMasterConfig) != HAL_OK)
+    {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+}
+
+/* TIM9 init function */
+static void MX_TIM9_Init(void)
+{
+    TIM_ClockConfigTypeDef sClockSourceConfig;
+
+    htim9.Instance           = TIM9;
+    htim9.Init.Prescaler     = 15999;
+    htim9.Init.CounterMode   = TIM_COUNTERMODE_UP;
+    htim9.Init.Period        = 4999;
+    htim9.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    if (HAL_TIM_Base_Init(&htim9) != HAL_OK)
+    {
+        _Error_Handler(__FILE__, __LINE__);
+    }
+
+    sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+    if (HAL_TIM_ConfigClockSource(&htim9, &sClockSourceConfig) != HAL_OK)
     {
         _Error_Handler(__FILE__, __LINE__);
     }

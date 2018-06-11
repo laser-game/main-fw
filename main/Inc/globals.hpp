@@ -8,10 +8,12 @@
 #include "cm-packet.hpp"
 #include "cm-uart.hpp"
 #include "cm-hm-trp.hpp"
+#include "cm-timer.hpp"
 
 #include "color.hpp"
 #include "sound-player.hpp"
 #include "vest.hpp"
+#include "player.hpp"
 #include "battery.hpp"
 #include "command-queue.hpp"
 #include "ir-rx.hpp"
@@ -39,9 +41,11 @@ public:
     ColorDriver *color_driver;
     SoundPlayer *sound_player;
     Vest *vest;
+    Player *player;
     UART *debug;
     Battery *battery;
     Packet *packet;
+    Timer *timer_spirit;
 
     inline void init(void)
     {

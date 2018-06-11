@@ -60,6 +60,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         global->battery->read_charge();
         global->debug->tx("Accumulated Charge: " + to_string(global->battery->get_charge_raw()) + '\n');
     }
+    else if (htim->Instance == global->timer_spirit->get_htim()->Instance)
+    {
+        global->player->live();
+    }
 }
 
 void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
